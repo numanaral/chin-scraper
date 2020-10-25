@@ -4,7 +4,7 @@ import {
 	REGEX_PINYIN,
 	PINYIN_URL_PREFIX,
 	PINYIN_URL_POSTFIX,
-	SYSTRAN_URL_PREFIX,
+	PUPPETEER_URL,
 } from 'consts';
 
 export const isChinese = text => REGEX_CHINESE.test(text);
@@ -50,7 +50,7 @@ export const getEnglishTranslation = async (
 ) => {
 	try {
 		const res = await fetch(
-			'https://cors-anywhere.herokuapp.com/https://backend-dot-try-puppeteer.appspot.com/run',
+			CORS_BYPASS_URL + PUPPETEER_URL,
 			{
 				headers: {
 					accept: '*/*',

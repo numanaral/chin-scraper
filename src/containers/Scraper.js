@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-import { isChinese, getEscapedChar } from 'utils';
+import { isChinese, getEscapedChar, speak } from 'utils';
 import Frames from 'components/Frames';
 import SearchBox from 'components/SearchBox';
+
+// Run once as for some reason the first speak is muted
+speak('');
 
 const Scraper = () => {
 	const [currentChars, setCurrentChars] = useState('');
