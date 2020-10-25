@@ -3,9 +3,9 @@ Scrapes the character strokes (gif, image) &amp; pinyin from hanzi5, and transla
 
 ---
 ## Live Website:
-- [Github Pages](https://numanaral.github.io/chin-scraper/)
+- [numanaral.github.io/chin-scraper/](https://numanaral.github.io/chin-scraper/)
 ## Code Playground:
-- [Sandbox - Play w/ the code](https://codesandbox.io/s/chin-scraper-4qw4v)
+- [CodeSandbox - Play w/ the code](https://codesandbox.io/s/chin-scraper-4qw4v)
 ---
 ## My Quizlet lists (Vocab from the TextBook - Up to L3):
 - [Chinese (pinyin) <=> meaning (word classification)](https://quizlet.com/537832006/%E4%B8%AD%E6%96%87-chinese-%E4%B8%AD%E6%96%87-pinyin-meaning-word-classification-flash-cards/)
