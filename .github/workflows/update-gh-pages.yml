@@ -13,8 +13,8 @@ jobs:
       with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     - run: |
-        git config user.name numanaral
-        git config user.email ahmet.aral@ucalgary.ca
+        git config --global user.name 'gh-pages CI'
+        git config --global user.email 'numanaral@users.noreply.github.com'
     - name: Setup node and deploy to gh-pages
       uses: actions/setup-node@v1
       with:
