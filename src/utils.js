@@ -26,7 +26,6 @@ export const corsBypassedFetch = async url => {
 export const fetchPinyin = async (escapedCharacter, setPinyin) => {
 	try {
 		const resposeText = await corsBypassedFetch(
-			CORS_BYPASS_URL +
 				PINYIN_URL_PREFIX +
 				escapedCharacter +
 				PINYIN_URL_POSTFIX
