@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { isChinese, getEscapedChar, speak } from 'utils';
 import Frames from 'components/Frames';
-import SearchBox from 'components/SearchBox';
+import SearchForm from 'components/SearchForm';
 
 // Run once as for some reason the first speak is muted
 speak('');
@@ -31,10 +31,18 @@ const Scraper = () => {
 		setCurrentCharsWithEscapedPairs(escapedChars);
 	}, [currentChars]);
 
+	useEffect(() => {
+		const initAnalytics = async () => {
+			const { default: Analytics } = await import('analytics');
+			Analytics.init();
+		};
+
+		if (process.env.NODE_ENV === 'production') initAnalytics();
+	}, []);
+
 	return (
 		<>
-			<SearchBox onChange={handleChange} />
-			<br />
+			<SearchForm onChange={handleChange} />
 			<Frames
 				currentCharsWithEscapedPairs={currentCharsWithEscapedPairs}
 			/>
