@@ -17,23 +17,35 @@ Scrapes the character strokes (gif, image) &amp; pinyin from hanzi5, and transla
 		- You don't need to switch pages
 		- You can search multiple characters as you type
 - View pinyin
-- View translation (NOTE: limited API requests, more details to be added later)
+- View translation
 - Hear the pronounciation of the character
 ---
 ## To Do: 
 - [x] Display stroke gif, pinyin
 - [x] Display translation
 - [x] Speak out the word
+- [x] Create my own cors-anywhere server
+- [ ] Create my own puppeteer server
 - [ ] Cleanup the scraper utils
-	- [ ] Remove iframes
+	- [ ] Optimize fetches - Do 2 total fetches instead of fetch/char
+    	- [ ] hanzi5: fetch fetch the page and extract all, remove iframes
+    	- [ ] google-translate: search entire word + chars separated by `\n`  in one go
+    	- [ ] Split and use these 2 fetch results
 - [ ] Add full word translation
 - [ ] Add full word pronounciation
+- [x] Collect analytics for the searched words
+  - [ ] Display top 10 searched words
+  - [ ] Make this an interactive list
 - [ ] Add config options to hide/show what to display
 - [ ] Work on UI
+  - [ ] favicon
+  - [ ] responsiveness
+  - [ ] layout
 - [ ] Work on favourites option
 	- [ ] Keep it in the local storage in the beginning
 - [ ] Add download option
-- [ ] Setup service worker along with PWA settings
+- [ ] Setup PWA
+- [ ] Update service worker
 ---
 ## Notes:
 - Cannot fetch the google-translate page and scrape as the page requires scripts to be loaded and ran to fully display the result. Thus we are using puppeteer. The trick here is that until we run a separate servers for CORS-anywhere and puppeteer, we will take advantage of [CORS-Anywhere](https://cors-anywhere.herokuapp.com/) and [Puppeteer Playground](https://backend-dot-try-puppeteer.appspot.com) to scrape data from hanzi5 and google-translate.
