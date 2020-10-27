@@ -7,7 +7,7 @@ import IFrame from 'components/IFrame';
 const Frames = ({ currentCharsWithEscapedPairs }) => (
 	<CenteredContainer>
 		{currentCharsWithEscapedPairs.map((charPair, ind) => (
-			<IFrame key={ind} {...charPair} />
+			<IFrame key={charPair.originalChar + ind} {...charPair} />
 		))}
 	</CenteredContainer>
 );
