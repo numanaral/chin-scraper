@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { isChinese, getEscapedChar, speak } from 'utils';
+import { isChinese, getEscapedChar, speak, isAnalyticsDisabled } from 'utils';
 import Frames from 'components/Frames';
 import SearchForm from 'components/SearchForm';
 
@@ -37,7 +37,10 @@ const Scraper = () => {
 			Analytics.init();
 		};
 
-		if (process.env.NODE_ENV === 'production') initAnalytics();
+		// Ignore analytics on url w/ ?ga=false
+		if (!isAnalyticsDisabled() && process.env.NODE_ENV === 'production') {
+			initAnalytics();
+		}
 	}, []);
 
 	return (

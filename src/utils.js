@@ -99,3 +99,5 @@ export const speak = text => {
 	utterance.text = text;
 	synth.speak(utterance);
 };
+
+export const isAnalyticsDisabled = () => window.location.search === '?ga=false';
