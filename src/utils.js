@@ -26,9 +26,7 @@ export const corsBypassedFetch = async url => {
 export const fetchPinyin = async (escapedCharacter, setPinyin) => {
 	try {
 		const resposeText = await corsBypassedFetch(
-				PINYIN_URL_PREFIX +
-				escapedCharacter +
-				PINYIN_URL_POSTFIX
+			PINYIN_URL_PREFIX + escapedCharacter + PINYIN_URL_POSTFIX
 		);
 
 		const match = REGEX_PINYIN.exec(resposeText);
@@ -48,26 +46,22 @@ export const getEnglishTranslation = async (
 	setEnglishTranslation
 ) => {
 	try {
-		const res = await fetch(
-			CORS_BYPASS_URL + PUPPETEER_URL,
-			{
-				headers: {
-					accept: '*/*',
-					'accept-language': 'en',
-					'content-type':
-						'multipart/form-data; boundary=----WebKitFormBoundary8HRvFx6KkZQPoCAm',
-					'sec-fetch-dest': 'empty',
-					'sec-fetch-mode': 'cors',
-					'sec-fetch-site': 'cross-site',
-				},
-				referrer: 'https://try-puppeteer.appspot.com/',
-				referrerPolicy: 'strict-origin-when-cross-origin',
-				body: `------WebKitFormBoundary8HRvFx6KkZQPoCAm\r\nContent-Disposition: form-data; name="file"; filename="blob"\r\nContent-Type: text/javascript\r\n\r\n  const browser = await puppeteer.launch();\n  const page = await browser.newPage();\n\n  await page.goto('https://translate.google.com/#zh-CN|en|${chineseText}');\n\n  // Extract the results from the page.\n  const result = await page.evaluate(() => {\n     console.log('here')\n    return [...document.querySelectorAll('.tlid-translation')][0].textContent;\n  });\n\nconsole.log(result);\n\n  await browser.close();\r\n------WebKitFormBoundary8HRvFx6KkZQPoCAm--\r\n`,
-				method: 'POST',
-				mode: 'cors',
-				credentials: 'omit',
-			}
-		);
+		const res = await fetch(CORS_BYPASS_URL + PUPPETEER_URL, {
+			headers: {
+				accept: '*/*',
+				'accept-language': 'en',
+				'content-type': `multipart/form-data; boundary=----WebKitFormBoundary8HRvFx6KkZQPoCAm`,
+				'sec-fetch-dest': 'empty',
+				'sec-fetch-mode': 'cors',
+				'sec-fetch-site': 'cross-site',
+			},
+			referrer: 'https://try-puppeteer.appspot.com/',
+			referrerPolicy: 'strict-origin-when-cross-origin',
+			body: `------WebKitFormBoundary8HRvFx6KkZQPoCAm\r\nContent-Disposition: form-data; name="file"; filename="blob"\r\nContent-Type: text/javascript\r\n\r\n  const browser = await puppeteer.launch();\n  const page = await browser.newPage();\n\n  await page.goto('https://translate.google.com/#zh-CN|en|${chineseText}');\n\n  // Extract the results from the page.\n  const result = await page.evaluate(() => {\n     console.log('here')\n    return [...document.querySelectorAll('.tlid-translation')][0].textContent;\n  });\n\nconsole.log(result);\n\n  await browser.close();\r\n------WebKitFormBoundary8HRvFx6KkZQPoCAm--\r\n`,
+			method: 'POST',
+			mode: 'cors',
+			credentials: 'omit',
+		});
 
 		// Cannot extract text
 		// Failed to execute 'text' on 'Response': Illegal invocation
@@ -91,9 +85,9 @@ utterance.rate = 0.8;
 
 export const speak = text => {
 	if (synth.speaking || text === '') return;
-	
+
 	// For some reason this fails in the first time
-	if(!utterance.voice) {
+	if (!utterance.voice) {
 		utterance.voice = synth.getVoices().find(v => v.lang === 'zh-CN');
 	}
 	utterance.text = text;

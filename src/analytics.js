@@ -1,8 +1,5 @@
 // GA & Timer Src: https://www.simoahava.com/analytics/track-autocomplete-search-google-tag-manager/
-const Analytics = (function() {
-	// Set searchField to the search input field.
-	// Set timeout to the time you want to wait after the last character in milliseconds.
-	// Set minLength to the minimum number of characters that constitutes a valid search.
+const Analytics = (() => {
 	const searchField = document.querySelector(
 		'input[name="chinese-character"]'
 	);
@@ -29,10 +26,7 @@ const Analytics = (function() {
 		if (!searchText) return;
 
 		// Only grab the chinese text
-		searchText = searchText
-			.split('')
-			.filter(isChinese)
-			.join('');
+		searchText = searchText.split('').filter(isChinese).join('');
 
 		// Meaning all the chars were non-chinese
 		if (!searchText) return;
