@@ -9,3 +9,5 @@ export const PINYIN_URL_PREFIX = 'https://www.hanzi5.com/bishun/';
 export const PINYIN_URL_POSTFIX = '.html';
 export const PUPPETEER_URL =
 	'https://backend-dot-try-puppeteer.appspot.com/run';
+
+export const SERVER_URL = 'https://chin-scraper-backend.herokuapp.com/';
