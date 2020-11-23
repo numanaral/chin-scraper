@@ -1,6 +1,6 @@
 {
-    "name": "Chinese Scraper",
-    "short_name": "Chinese Scraper",
+    "name": "Chin Scraper",
+    "short_name": "Chin Scraper",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -12,7 +12,8 @@
             "sizes": "512x512",
             "type": "image/png"
         }
-    ],
+	],
+	"start_url": "./index.html",
     "theme_color": "#64baf4",
     "background_color": "#64baf4",
     "display": "standalone"
