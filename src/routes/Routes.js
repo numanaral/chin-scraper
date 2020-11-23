@@ -3,6 +3,7 @@ import { Redirect, Switch, useLocation } from 'react-router-dom';
 
 import usePageView from 'store/firebase/hooks/usePageView';
 import RouteWrapper from './RouteWrapper';
+import { ROUTE_LIST } from './constants';
 
 const RedirectToNotFound = () => {
 	const { pathname } = useLocation();
@@ -28,6 +29,18 @@ const Routes = props => {
 	usePageView();
 	return (
 		<Switch>
+			{ROUTE_LIST.map(({ component, path, ...rest }) => {
+				return (
+					<RouteWrapper
+						key={path}
+						path={path}
+						component={component}
+						exact
+						{...rest}
+						{...props}
+					/>
+				);
+			})}
 			<RedirectToNotFound />
 		</Switch>
 	);
