@@ -1,5 +1,5 @@
 import React, { cloneElement, useState } from 'react';
-import { IconButton, Popover as MuiPopover } from '@material-ui/core';
+import { Popover as MuiPopover } from '@material-ui/core';
 import TooltipButton from 'components/TooltipButton';
 import styled from 'styled-components';
 

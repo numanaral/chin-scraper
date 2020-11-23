@@ -71,8 +71,7 @@ const getHanziTrainerDetails = async (pinyin, translation) => {
 			details.translations = translationMatch
 				.querySelector('p')
 				// eslint-disable-next-line prettier/prettier
-				.innerText
-				.replace(/\n/, '')
+				.innerText.replace(/\n/, '')
 				.split(',')
 				.map(w => w.trim());
 		} catch (err) {

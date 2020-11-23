@@ -15,11 +15,20 @@ import {
 /* eslint-disable prettier/prettier */
 const AsyncLearn = loadable(() => import(`routes/pages/Learn`), 'large');
 const AsyncPractice = loadable(() => import(`routes/pages/Practice`), 'large');
-const AsyncPreferences = loadable(() => import(`routes/pages/Preferences`), 'large');
-const AsyncAnalytics = loadable(() => import(`routes/pages/Analytics`), 'large');
+const AsyncPreferences = loadable(
+	() => import(`routes/pages/Preferences`),
+	'large'
+);
+const AsyncAnalytics = loadable(
+	() => import(`routes/pages/Analytics`),
+	'large'
+);
 const AsyncAbout = loadable(() => import(`routes/pages/About`), 'large');
 const AsyncNotFound = loadable(() => import(`./pages/NotFound`), 'large');
-const AsyncUnauthorized = loadable(() => import(`./pages/Unauthorized`), 'large');
+const AsyncUnauthorized = loadable(
+	() => import(`./pages/Unauthorized`),
+	'large'
+);
 const AsyncLogin = loadable(() => import(`./pages/Login`), 'large');
 /* eslint-enable prettier/prettier */
 
