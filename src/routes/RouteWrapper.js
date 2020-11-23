@@ -1,4 +1,5 @@
 import React, { cloneElement } from 'react';
+import Helmet from 'react-helmet';
 // TODO: Will add these as we progress
 // import { useSelector } from 'react-redux';
 import { Route, useHistory, useLocation } from 'react-router-dom';
@@ -36,7 +37,14 @@ const LazyLogin = loadable(() => import('./pages/Login'));
  * 		- Redirect to Unauthorized
  * - Else access the path
  */
-const RouteWrapper = ({ component: Component, roles, themeProps, ...rest }) => {
+const RouteWrapper = ({
+	component: Component,
+	roles,
+	themeProps,
+	title,
+	description,
+	...rest
+}) => {
 	// TODO: Will add these as we progress
 	// const userName = useSelector(makeSelectUserName());
 	// const userRoles = useSelector(makeSelectUserRoles());
@@ -98,7 +106,17 @@ const RouteWrapper = ({ component: Component, roles, themeProps, ...rest }) => {
 			}
 		}
 
-		return cloneElement(Component, { ...renderProps, themeProps });
+		return (
+			<>
+				{title && (
+					<Helmet>
+						<title>{title}</title>
+						<meta name="description" content={description} />
+					</Helmet>
+				)}
+				{cloneElement(Component, { ...renderProps, themeProps })}
+			</>
+		);
 	};
 
 	return (

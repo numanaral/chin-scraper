@@ -21,37 +21,65 @@ const AsyncAbout = loadable(() => import(`routes/pages/About`), 'large');
 const AsyncNotFound = loadable(() => import(`./pages/NotFound`), 'large');
 const AsyncUnauthorized = loadable(() => import(`./pages/Unauthorized`), 'large');
 const AsyncLogin = loadable(() => import(`./pages/Login`), 'large');
-/* eslint-enable max-len */
+/* eslint-enable prettier/prettier */
 
 // const TEMP_TEST_ROLES = ['LoggedInUser'];
 
 const ROUTE_LIST = [
-	{ path: '/chin-scraper/', component: <AsyncLearn /> },
+	{
+		title: 'Learn | Chin Scraper',
+		description: `Learn new characters along with their translations and pinyin. Check details for more examples and practice writing using your mouse/fingers!`,
+		path: '/chin-scraper/',
+		component: <AsyncLearn />,
+	},
 	{
 		path: '/',
 		component: <Redirect to="/chin-scraper/" />,
 	},
 	{
+		title: 'Practice',
+		description: `Practice your writing skills. Enter characters you want to learn, shuffle the list, listen to the pronounciation and learn new characters in no time.`,
 		path: '/practice',
 		component: <AsyncPractice />,
 	},
 	{
+		title: 'About',
+		description: `Resources, links and more info regarding the app.`,
 		path: '/about',
 		component: <AsyncAbout />,
 	},
 	{
+		title: 'Preferences',
+		description: `Change theme, turn on/off animations & play with colors.`,
 		path: '/preferences',
 		component: <AsyncPreferences />,
 		// roles: TEMP_TEST_ROLES,
 	},
 	{
+		title: 'Analytics',
+		description: `Visualize the most searched words / characters.`,
 		path: '/analytics',
 		component: <AsyncAnalytics />,
 		// roles: TEMP_TEST_ROLES,
 	},
-	{ path: '/unauthorized', component: <AsyncUnauthorized /> },
-	{ path: '/login', component: <AsyncLogin /> },
-	{ path: '/not-found', component: <AsyncNotFound /> },
+	{
+		title: 'Unauthorized',
+		description: `User does not have access to the following page.`,
+		path: '/unauthorized',
+		component: <AsyncUnauthorized />,
+	},
+	{
+		title: 'Login',
+		description: `Login to the app.`,
+		path: '/login',
+		component: <AsyncLogin />,
+	},
+	{
+		title: 'Not Found',
+		description: `The page you are looking for might have been removed had its name changed or is temporarily unavailable.`,
+		path: '/not-found',
+		component: <AsyncNotFound />,
+	},
 ];
 
 const PAGES = [
@@ -79,7 +107,7 @@ const PAGES = [
 	},
 	{
 		label: 'About',
-		tooltip: 'Resources, links and about the app',
+		tooltip: 'Resources, links and more info regarding the app',
 		to: '/about',
 		icon: InfoIcon,
 	},
