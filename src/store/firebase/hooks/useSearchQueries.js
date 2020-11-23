@@ -1,8 +1,6 @@
 import { useFirestore, useFirestoreCollectionData } from 'reactfire';
 
-const isAnalyticsDisabled = () => window.location.search === '?ga=false';
-const devOrAnalyticsIsDisabled =
-	process.env.NODE_ENV !== 'production' || isAnalyticsDisabled();
+import { devOrAnalyticsIsDisabled } from '../utils';
 
 const useSearchQueries = () => {
 	const ref = useFirestore().collection('searchQueries');
