@@ -45,7 +45,9 @@ module.exports = {
 		'default-case': [ERROR, { commentPattern: 'No Default' }],
 		'import/no-named-as-default': OFF,
 		'import/prefer-default-export': OFF,
-		'linebreak-style': [ERROR, 'windows'],
+		// 'linebreak-style': [ERROR, 'windows'],
+		'prettier/prettier': OFF,
+		'linebreak-style': OFF,
 		'max-len': [
 			ERROR,
 			{
