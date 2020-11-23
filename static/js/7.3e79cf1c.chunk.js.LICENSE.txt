@@ -1,0 +1,4 @@
+/*!
+ * Hanzi Writer v2.3.0
+ * https://chanind.github.io/hanzi-writer
+ */
