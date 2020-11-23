@@ -57,7 +57,7 @@ const Practice = () => {
 		input,
 		onSubmit,
 		...textFieldProps
-	} = useInputWithCharacterList('一二三', switches.shuffle, 'Enter hanzi(s)');
+	} = useInputWithCharacterList('', switches.shuffle, 'Enter hanzi(s)');
 	const {
 		index,
 		isPreviousDisabled,
@@ -140,61 +140,63 @@ const Practice = () => {
 				</ContainerWithCenteredItems>
 			)}
 			{/* HANZI */}
-			<ContainerWithCenteredItems
-				container
-				alignItems="center"
-				justify="space-between"
-			>
-				{/* LEFT BUTTON */}
-				<div {...getOrder(2)}>
-					<TooltipButton
-						tooltip="Previous"
-						icon={<PreviousIcon {...DEFAULT_ICON_SIZE} />}
-						onClick={onPrevious}
-						disabled={isPreviousDisabled}
-					/>
-					<Spacer order="1" direction="right" spacing="10" />
-				</div>
-				{/* DRAWING */}
-				<Grid
-					{...(smAndDown && {
-						container: true,
-						justify: 'center',
-					})}
-					item
-					xs={12}
-					md="auto"
-					{...getOrder((smAndDown && 1) || 3)}
+			{!!characters.length && (
+				<ContainerWithCenteredItems
+					container
+					alignItems="center"
+					justify="space-between"
 				>
-					<StyledPaper elevation={3}>
-						<StyledTooltipButton
-							tooltip="Speak"
-							onClick={onSpeak}
-							disabled={!input}
-							icon={<SpeakIcon {...DEFAULT_ICON_SIZE} />}
-						/>
-						{hanzi}
-					</StyledPaper>
-				</Grid>
-				{/* RIGHT BUTTON */}
-				<div {...getOrder(4)}>
-					<Spacer order="2" direction="left" spacing="10" />
-					{((!isNextDisabled || !switches.continuous) && (
+					{/* LEFT BUTTON */}
+					<div {...getOrder(2)}>
 						<TooltipButton
-							tooltip="Next"
-							icon={<NextIcon {...DEFAULT_ICON_SIZE} />}
-							onClick={onNext}
-							disabled={isNextDisabled}
+							tooltip="Previous"
+							icon={<PreviousIcon {...DEFAULT_ICON_SIZE} />}
+							onClick={onPrevious}
+							disabled={isPreviousDisabled}
 						/>
-					)) || (
-						<TooltipButton
-							tooltip="Restart"
-							icon={<ReplayIcon {...DEFAULT_ICON_SIZE} />}
-							onClick={onRestart}
-						/>
-					)}
-				</div>
-			</ContainerWithCenteredItems>
+						<Spacer order="1" direction="right" spacing="10" />
+					</div>
+					{/* DRAWING */}
+					<Grid
+						{...(smAndDown && {
+							container: true,
+							justify: 'center',
+						})}
+						item
+						xs={12}
+						md="auto"
+						{...getOrder((smAndDown && 1) || 3)}
+					>
+						<StyledPaper elevation={3}>
+							<StyledTooltipButton
+								tooltip="Speak"
+								onClick={onSpeak}
+								disabled={!input}
+								icon={<SpeakIcon {...DEFAULT_ICON_SIZE} />}
+							/>
+							{hanzi}
+						</StyledPaper>
+					</Grid>
+					{/* RIGHT BUTTON */}
+					<div {...getOrder(4)}>
+						<Spacer order="2" direction="left" spacing="10" />
+						{((!isNextDisabled || !switches.continuous) && (
+							<TooltipButton
+								tooltip="Next"
+								icon={<NextIcon {...DEFAULT_ICON_SIZE} />}
+								onClick={onNext}
+								disabled={isNextDisabled}
+							/>
+						)) || (
+							<TooltipButton
+								tooltip="Restart"
+								icon={<ReplayIcon {...DEFAULT_ICON_SIZE} />}
+								onClick={onRestart}
+							/>
+						)}
+					</div>
+				</ContainerWithCenteredItems>
+			)}
 		</PageContainer>
 	);
 };

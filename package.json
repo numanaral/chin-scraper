@@ -1,7 +1,7 @@
 {
   "name": "chin-205",
   "version": "1.0.0",
-  "homepage": "http://numanaral.github.io/chin-scraper",
+  "homepage": "http://numanaral.github.io/chin-scraper/",
   "description": "Scrapes the character strokes (gif, image) & pinyin from hanzi5, and translation from google translate via puppeteer",
   "keywords": [],
   "main": "src/index.js",
