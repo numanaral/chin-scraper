@@ -1,9 +1,12 @@
 import {
 	element,
 	elementType,
+	func,
+	instanceOf,
 	number,
 	oneOf,
 	oneOfType,
+	shape,
 	string,
 } from 'prop-types';
 
@@ -49,6 +52,8 @@ const buttonVariant = oneOf(['text', 'outlined', 'contained']);
  */
 const numberOrString = oneOfType([number, string]);
 
+const refType = oneOfType([func, shape({ current: instanceOf(Element) })]);
+
 export {
 	elementOrType,
 	icon,
@@ -57,4 +62,5 @@ export {
 	size,
 	buttonVariant,
 	numberOrString,
+	refType,
 };
