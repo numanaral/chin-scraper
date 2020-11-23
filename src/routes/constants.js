@@ -89,7 +89,7 @@ const NAV_LIST = [
 	{
 		label: 'Learn',
 		tooltip: 'Translations, pinyin, more examples and quiz, AIO solution',
-		to: '/chin-scraper',
+		to: '/chin-scraper/',
 		icon: LearnIcon,
 	},
 	{
@@ -111,7 +111,7 @@ const NAV_LIST_MOBILE = [
 	{
 		label: 'Learn',
 		tooltip: 'Translations, pinyin, more examples and quiz, AIO solution',
-		to: '/chin-scraper',
+		to: '/chin-scraper/',
 		icon: LearnIcon,
 	},
 	{
