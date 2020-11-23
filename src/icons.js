@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMedal } from '@fortawesome/free-solid-svg-icons';
-import { faLeanpub } from '@fortawesome/free-brands-svg-icons';
+import { faMedal } from '@fortawesome/free-solid-svg-icons/faMedal';
+import { faLeanpub } from '@fortawesome/free-brands-svg-icons/faLeanpub';
 
 export {
 	Add as AddIcon,
