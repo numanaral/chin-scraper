@@ -10,6 +10,7 @@ Scrapes the character strokes (gif, image) &amp; pinyin from hanzi5, and transla
 ## My Quizlet lists (Vocab from the TextBook - Up to L3):
 - [Chinese (pinyin) <=> meaning (word classification)](https://quizlet.com/537832006/%E4%B8%AD%E6%96%87-chinese-%E4%B8%AD%E6%96%87-pinyin-meaning-word-classification-flash-cards/)
 - [Chinese <=> Pinyin](https://quizlet.com/537833049/%E4%B8%AD%E6%96%87-chinese-%E4%B8%AD%E6%96%87-pinyin-flash-cards/)
+- [L4: Chinese <=> Pinyin](https://quizlet.com/_8z6ll4?x=1qqt&i=fdiyj)
 ---
 ## Things you can do:
 - Search for chinese character(s)
