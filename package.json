@@ -60,5 +60,11 @@
     "prettier": "2.1.2",
     "progress-bar-webpack-plugin": "^2.1.0",
     "webpack-bundle-analyzer": "^3.9.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "shared-config"
+    ]
   }
 }
