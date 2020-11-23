@@ -2,16 +2,27 @@ const OFF = 0;
 const WARN = 1;
 const ERROR = 2;
 
+/**
+ * @typedef {Object} ESLintRules
+ * @property {import('eslint/rules').ESLintRules} rules
+ * @typedef {import('eslint').Linter.Config&ESLintRules} ESLintConfig
+ */
+
+/**
+ * @type {ESLintConfig}
+ */
 module.exports = {
 	env: {
 		browser: true,
-		es2021: true,
+		es6: true,
+		// es2021: true,
 	},
 	extends: [
+		'react-app',
 		'plugin:react/recommended',
 		'airbnb',
-		'plugin:prettier/recommended',
 		'prettier/react',
+		'plugin:prettier/recommended',
 	],
 	parserOptions: {
 		ecmaFeatures: {
@@ -20,11 +31,11 @@ module.exports = {
 		ecmaVersion: 12,
 		sourceType: 'module',
 	},
-	plugins: ['react', 'react-hooks', 'prettier'],
+	plugins: ['react', 'react-hooks', '@babel', 'prettier'],
 	settings: {
 		'import/resolver': {
 			node: {
-				extensions: ['.js', '.jsx', '.ts', '.tsx'],
+				extensions: ['.js', '.jsx'],
 				paths: ['./src'],
 			},
 		},
@@ -38,7 +49,8 @@ module.exports = {
 		'max-len': [
 			ERROR,
 			{
-				ignoreComments: false,
+				ignorePattern: '^import .*',
+				ignoreComments: true,
 				ignoreUrls: true,
 				ignoreRegExpLiterals: true,
 				ignoreTrailingComments: true,
@@ -59,5 +71,13 @@ module.exports = {
 		'react/jsx-props-no-spreading': OFF,
 		'react/no-array-index-key': OFF,
 		'prettier/prettier': ERROR,
+		'no-unused-expressions': OFF,
+		'@babel/no-unused-expressions': ERROR,
+		// These are alright for development
+		...(process.env.NODE_ENV !== 'production' && {
+			'react/prop-types': WARN,
+			'no-unused-vars': WARN,
+			'no-debugger': WARN,
+		}),
 	},
 };
