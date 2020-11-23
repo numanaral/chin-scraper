@@ -55,4 +55,5 @@ const About = () => (
 	</PageContainer>
 );
 
+export { LinkWrapper, TypographyWrapper };
 export default About;

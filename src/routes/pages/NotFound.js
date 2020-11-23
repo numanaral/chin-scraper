@@ -12,7 +12,6 @@ const StyledSadIcon = styled(SadIcon)`
 `;
 
 const NotFound = ({ location }) => {
-	console.log(location);
 	const referrer = location?.state?.referrer;
 	return (
 		<Container>

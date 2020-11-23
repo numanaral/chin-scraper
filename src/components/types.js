@@ -4,6 +4,7 @@ import {
 	func,
 	instanceOf,
 	number,
+	object,
 	oneOf,
 	oneOfType,
 	shape,
@@ -54,6 +55,9 @@ const numberOrString = oneOfType([number, string]);
 
 const refType = oneOfType([func, shape({ current: instanceOf(Element) })]);
 
+// TODO: Fill this out properly
+const theme = object;
+
 export {
 	elementOrType,
 	icon,
@@ -63,4 +67,5 @@ export {
 	buttonVariant,
 	numberOrString,
 	refType,
+	theme,
 };
