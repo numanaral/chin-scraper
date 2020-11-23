@@ -59,6 +59,11 @@ const ConstGlobalStyle = createGlobalStyle`
 			transition: ${THEME_COLOR_TRANSITION};
 		}
 
+		.svg-inline--fa {
+			min-width: 24px;
+			min-height: 24px;
+		}
+
 		/* #region SCROLLBARS */
 
 		* {

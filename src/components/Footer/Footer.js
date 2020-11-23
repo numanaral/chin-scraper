@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, useMediaQuery } from '@material-ui/core';
 import styled from 'styled-components';
-import TypographyWrapper from 'components/References/TypographyWrapper';
-import LinkWrapper from 'components/References/LinkWrapper';
+
+import { LinkWrapper, TypographyWrapper } from 'routes/pages/About';
 import AnimatedHeartIcon from './AnimatedHeartIcon';
 
 const ColoredBox = styled(Grid)`

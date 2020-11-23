@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMedal } from '@fortawesome/free-solid-svg-icons';
+import { faLeanpub } from '@fortawesome/free-brands-svg-icons';
 
 export {
 	Add as AddIcon,
@@ -35,4 +36,5 @@ export {
 } from '@material-ui/icons';
 
 const MedalIcon = <FontAwesomeIcon icon={faMedal} />;
-export { MedalIcon };
+const LearnIcon = <FontAwesomeIcon icon={faLeanpub} />;
+export { MedalIcon, LearnIcon };

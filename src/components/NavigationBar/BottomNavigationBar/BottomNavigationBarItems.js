@@ -22,9 +22,6 @@ const BottomNavigationBarItems = ({
 		?.map(item => item.to)
 		.some(link => pathname === link);
 
-	console.log('label', label);
-	console.log('to', to);
-
 	return (
 		(menuItems && (
 			<OtherPagesMenu
