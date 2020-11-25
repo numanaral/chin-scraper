@@ -9,11 +9,11 @@
     "static/js/6.89c19a29.chunk.js": "/chin-scraper/static/js/6.89c19a29.chunk.js",
     "static/js/7.3e79cf1c.chunk.js": "/chin-scraper/static/js/7.3e79cf1c.chunk.js",
     "main.js": "/chin-scraper/static/js/main.6837bb25.chunk.js",
-    "runtime-main.js": "/chin-scraper/static/js/runtime-main.d35a2023.js",
+    "runtime-main.js": "/chin-scraper/static/js/runtime-main.bd1e470e.js",
     "static/js/10.9db39cab.chunk.js": "/chin-scraper/static/js/10.9db39cab.chunk.js",
     "static/js/11.2911afe0.chunk.js": "/chin-scraper/static/js/11.2911afe0.chunk.js",
-    "static/js/12.c76a475d.chunk.js": "/chin-scraper/static/js/12.c76a475d.chunk.js",
-    "static/js/13.caaf133d.chunk.js": "/chin-scraper/static/js/13.caaf133d.chunk.js",
+    "static/js/12.75df68c3.chunk.js": "/chin-scraper/static/js/12.75df68c3.chunk.js",
+    "static/js/13.ae09bd6d.chunk.js": "/chin-scraper/static/js/13.ae09bd6d.chunk.js",
     "static/js/14.ff729745.chunk.js": "/chin-scraper/static/js/14.ff729745.chunk.js",
     "static/js/15.3a65dd4b.chunk.js": "/chin-scraper/static/js/15.3a65dd4b.chunk.js",
     "static/js/16.95b69df0.chunk.js": "/chin-scraper/static/js/16.95b69df0.chunk.js",
@@ -51,7 +51,7 @@
     "static/media/EmperorLogo.5f9ab40d.svg": "/chin-scraper/static/media/EmperorLogo.5f9ab40d.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d35a2023.js",
+    "static/js/runtime-main.bd1e470e.js",
     "static/js/10.9db39cab.chunk.js",
     "static/js/main.6837bb25.chunk.js"
   ]
