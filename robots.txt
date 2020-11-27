@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /chin-scraper/not-found
+Disallow: /chin-scraper/unauthorized
+Disallow: /chin-scraper/login
+Disallow: /not-found
+Disallow: /unauthorized
+Disallow: /login
+
+Sitemap: https://numanaral.github.io/chin-scraper/sitemap.xml
