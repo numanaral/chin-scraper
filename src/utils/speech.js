@@ -38,10 +38,14 @@ const HAN_TRAINER_PRO_PREFIX = `https://www.hantrainerpro.de/resources/pronuncia
 const HAN_TRAINER_PRO_POSTFIX = '.mp3';
 
 // Don't recreate these on each speak
-const synth = window.speechSynthesis;
-const utterance = new SpeechSynthesisUtterance();
-utterance.pitch = 1;
-utterance.rate = 0.8;
+let synth;
+let utterance;
+if (window.speechSynthesis || window.SpeechSynthesisUtterance) {
+	synth = window.speechSynthesis;
+	utterance = new SpeechSynthesisUtterance();
+	utterance.pitch = 1;
+	utterance.rate = 0.8;
+}
 
 const PINYIN_JS_URL = `https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.js`;
 const PINYIN_JS_DICTIONARY_URL = `https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_withtone.js`;
@@ -75,6 +79,13 @@ const markToNumberForHanTrainerPro = pinyin =>
  */
 const speak = text => {
 	if (!text) return;
+	if (!synth || !utterance) {
+		// eslint-disable-next-line no-alert
+		alert(
+			`You browser doesn't support native speec, please upgrade or try somewhere else for now.`
+		);
+		return;
+	}
 	if (synth.speaking) synth.cancel();
 
 	// For some reason this fails in the first time
