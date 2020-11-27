@@ -15,6 +15,7 @@ import ErrorBoundary from 'components/ErrorBoundary';
 import loadable from 'utils/loadable';
 import { hasAnyFrom } from 'utils/object';
 import { routeWrapperPropTypes, routeWrapperDefaultProps } from './types';
+import { BASE_PATH } from './constants';
 
 const LazyUnauthorized = loadable(() => import('./pages/Unauthorized'));
 const LazyLogin = loadable(() => import('./pages/Login'));
@@ -78,7 +79,7 @@ const RouteWrapper = ({
 		}
 		if (!userName) {
 			if (isAuthRequired && pathname !== '/login') {
-				push(`/login?returnUrl=${pathname}`, { roles });
+				push(`${BASE_PATH}/login?returnUrl=${pathname}`, { roles });
 			}
 
 			if (pathname === '/login') {
@@ -98,7 +99,7 @@ const RouteWrapper = ({
 		if (isAuthRequired) {
 			// If logged in, don't allow to /login or /unauthorized directly
 			if (pathname === '/login' || pathname === '/unauthorized') {
-				push('/');
+				push(`${BASE_PATH}/learn`);
 			}
 
 			if (!hasAnyFrom(requiredRoles, userRoles)) {

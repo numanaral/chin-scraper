@@ -50,7 +50,9 @@ const About = () => (
 			</LinkWrapper>
 			<Spacing />
 			<TypographyWrapper> App Created By: </TypographyWrapper>
-			<LinkWrapper href="https://numanaral.tech/">Numan Aral</LinkWrapper>
+			<LinkWrapper href="https://numanaral.github.io/">
+				Numan Aral
+			</LinkWrapper>
 		</Grid>
 	</PageContainer>
 );

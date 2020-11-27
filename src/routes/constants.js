@@ -33,21 +33,32 @@ const AsyncLogin = loadable(() => import(`./pages/Login`), 'large');
 /* eslint-enable prettier/prettier */
 
 // const TEMP_TEST_ROLES = ['LoggedInUser'];
+const BASE_PATH = '/chin-scraper';
+
+const mapBasePathForRoutes = route => ({
+	...route,
+	path: BASE_PATH + route.path,
+});
+
+const mapBasePathForLinks = link => ({
+	...link,
+	...(link.to && { to: BASE_PATH + link.to }),
+});
 
 const ROUTE_LIST = [
 	{
 		title: 'Learn | Chin Scraper',
 		description: `Learn new characters along with their translations and pinyin. Check details for more examples and practice writing using your mouse/fingers!`,
-		path: '/chin-scraper/',
+		path: '/learn',
 		component: <AsyncLearn />,
 	},
 	{
-		path: '/',
-		component: <Redirect to="/chin-scraper/" />,
+		path: '',
+		component: <Redirect to="/chin-scraper/learn" />,
 	},
 	{
 		title: 'Practice',
-		description: `Practice your writing skills. Enter characters you want to learn, shuffle the list, listen to the pronounciation and learn new characters in no time.`,
+		description: `Practice your writing skills. Enter characters you want to learn, shuffle the list, listen to the pronunciation and learn new characters in no time.`,
 		path: '/practice',
 		component: <AsyncPractice />,
 	},
@@ -89,7 +100,7 @@ const ROUTE_LIST = [
 		path: '/not-found',
 		component: <AsyncNotFound />,
 	},
-];
+].map(mapBasePathForRoutes);
 
 const PAGES = [
 	{
@@ -120,13 +131,13 @@ const PAGES = [
 		to: '/about',
 		icon: InfoIcon,
 	},
-];
+].map(mapBasePathForLinks);
 
 const NAV_LIST = [
 	{
 		label: 'Learn',
 		tooltip: 'Translations, pinyin, more examples and quiz, AIO solution',
-		to: '/chin-scraper/',
+		to: '/learn',
 		icon: LearnIcon,
 	},
 	{
@@ -135,20 +146,21 @@ const NAV_LIST = [
 		to: '/practice',
 		icon: GestureIcon,
 	},
-	...PAGES,
-	{
+]
+	.map(mapBasePathForLinks)
+	.concat(PAGES)
+	.concat({
 		label: 'Account',
 		tooltip: 'Account - Coming Soon -',
 		icon: AccountIcon,
 		disabled: true,
-	},
-];
+	});
 
 const NAV_LIST_MOBILE = [
 	{
 		label: 'Learn',
 		tooltip: 'Translations, pinyin, more examples and quiz, AIO solution',
-		to: '/chin-scraper/',
+		to: '/learn',
 		icon: LearnIcon,
 	},
 	{
@@ -169,7 +181,7 @@ const NAV_LIST_MOBILE = [
 		icon: AccountIcon,
 		disabled: true,
 	},
-];
+].map(mapBasePathForLinks);
 // .map(e => ({ ...e, roles: TEMP_TEST_ROLES })),];
 
-export { ROUTE_LIST, NAV_LIST, NAV_LIST_MOBILE };
+export { BASE_PATH, ROUTE_LIST, NAV_LIST, NAV_LIST_MOBILE };

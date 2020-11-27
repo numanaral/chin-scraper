@@ -3,7 +3,7 @@ import { Redirect, Switch, useLocation } from 'react-router-dom';
 
 import usePageView from 'store/firebase/hooks/usePageView';
 import RouteWrapper from './RouteWrapper';
-import { ROUTE_LIST } from './constants';
+import { BASE_PATH, ROUTE_LIST } from './constants';
 
 const RedirectToNotFound = () => {
 	const { pathname } = useLocation();
@@ -14,7 +14,7 @@ const RedirectToNotFound = () => {
 			component={
 				<Redirect
 					to={{
-						pathname: '/not-found',
+						pathname: `${BASE_PATH}/not-found`,
 						state: {
 							referrer: pathname,
 						},

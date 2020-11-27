@@ -25,7 +25,7 @@ const Footer = () => {
 				<AnimatedHeartIcon />
 				<TypographyWrapper>by:&nbsp;</TypographyWrapper>
 				<TypographyWrapper>
-					<LinkWrapper href="https://numanaral.tech/">
+					<LinkWrapper href="https://numanaral.github.io/">
 						Numan Aral
 					</LinkWrapper>
 				</TypographyWrapper>
