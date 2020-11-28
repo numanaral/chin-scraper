@@ -31,8 +31,8 @@ import { propTypes, defaultProps } from './types';
  * @param {...(import('@material-ui/lab').ToggleButtonGroupProps)}
  */
 const Toggle = ({ value, onChange, options, size, ...rest }) => {
-	const handleOnChange = (event, newValue) => {
-		if (!newValue || value === newValue) return;
+	const handleOnChange = (_, newValue) => {
+		if (value === newValue) return;
 		onChange(newValue);
 	};
 	return (
