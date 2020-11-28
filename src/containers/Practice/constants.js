@@ -27,13 +27,11 @@ const PRACTICE_CONFIG = {
 const MAX_SIZE = 350;
 const PRACTICE_CONFIG_LOCAL_STORAGE_KEY = 'practiceConfig';
 
-const DEFAULT_ICON_SIZE = {
-	fontSize: 'large',
-};
+const ICON_SIZE = 'large';
 
 export {
 	PRACTICE_CONFIG,
 	MAX_SIZE,
 	PRACTICE_CONFIG_LOCAL_STORAGE_KEY,
-	DEFAULT_ICON_SIZE,
+	ICON_SIZE,
 };

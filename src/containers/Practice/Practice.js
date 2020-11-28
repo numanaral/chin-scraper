@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	Box,
 	Grid,
@@ -28,7 +28,7 @@ import useSwitchesWithPersistedConfig from './useSwitchesWithPersistedConfig';
 import useHanziWriter from './useHanziWriter';
 import useInputWithCharacterList from './useInputWithCharacterList';
 import useIndex from './useIndex';
-import { DEFAULT_ICON_SIZE } from './constants';
+import { ICON_SIZE } from './constants';
 
 const StyledPaper = styled(Paper)`
 	${({ theme, $size }) => `
@@ -47,6 +47,8 @@ const StyledTooltipButton = styled(TooltipButton)`
 
 const Practice = () => {
 	const smAndDown = useMediaQuery(theme => theme.breakpoints.down('sm'));
+	const [pendingSpeechScraper, setPendingSpeechScraper] = useState(false);
+
 	const { ref: pageRef, size } = useOnResize();
 	const { switches, switchList } = useSwitchesWithPersistedConfig();
 	const {
@@ -56,6 +58,7 @@ const Practice = () => {
 		onSubmit,
 		...textFieldProps
 	} = useInputWithCharacterList('', switches.shuffle, 'Enter hanzi(s)');
+
 	const {
 		index,
 		isPreviousDisabled,
@@ -64,6 +67,7 @@ const Practice = () => {
 		onNext,
 		onRestart,
 	} = useIndex(input, [switches.shuffle], restart);
+
 	const { hanzi } = useHanziWriter({
 		size,
 		characters,
@@ -84,8 +88,18 @@ const Practice = () => {
 		</div>
 	));
 
-	const onSpeak = () => trySpeakNative(characters[index]);
+	const onSpeak = async () => {
+		try {
+			setPendingSpeechScraper(true);
+			await trySpeakNative(characters[index]);
+		} catch (err) {
+			console.error('Failed to speak');
+		} finally {
+			setPendingSpeechScraper(false);
+		}
+	};
 
+	// If autoPlay is enabled, speak automatically on new character
 	useEffect(() => {
 		if (switches.autoPlay) onSpeak();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -100,27 +114,31 @@ const Practice = () => {
 					variant="outlined"
 					type="search"
 					InputProps={{
-						...(smAndDown && {
-							startAdornment: (
-								<Popover
-									icon={SettingsIcon}
-									component={
-										<StyledPaper $size={350}>
-											{_switchList}
-										</StyledPaper>
-									}
-								/>
-							),
-						}),
 						endAdornment: (
 							<InputAdornment position="start">
-								<TooltipButton
-									tooltip="Search"
-									disabled={!input}
-									color="primary"
-									icon={<SubmitIcon fontSize="small" />}
-									type="submit"
-								/>
+								<>
+									<TooltipButton
+										tooltip="Search"
+										disabled={!input}
+										color="primary"
+										icon={SubmitIcon}
+										iconSize="small"
+										type="submit"
+									/>
+									{smAndDown && (
+										<Popover
+											icon={
+												// eslint-disable-next-line max-len
+												<SettingsIcon fontSize="small" />
+											}
+											component={
+												<StyledPaper $size={350}>
+													{_switchList}
+												</StyledPaper>
+											}
+										/>
+									)}
+								</>
 							</InputAdornment>
 						),
 					}}
@@ -148,7 +166,8 @@ const Practice = () => {
 					<div {...getOrder(2)}>
 						<TooltipButton
 							tooltip="Previous"
-							icon={<PreviousIcon {...DEFAULT_ICON_SIZE} />}
+							icon={PreviousIcon}
+							iconSize={ICON_SIZE}
 							onClick={onPrevious}
 							disabled={isPreviousDisabled}
 						/>
@@ -170,7 +189,9 @@ const Practice = () => {
 								tooltip="Speak"
 								onClick={onSpeak}
 								disabled={!input}
-								icon={<SpeakIcon {...DEFAULT_ICON_SIZE} />}
+								loading={pendingSpeechScraper}
+								iconSize={ICON_SIZE}
+								icon={SpeakIcon}
 							/>
 							{hanzi}
 						</StyledPaper>
@@ -181,14 +202,16 @@ const Practice = () => {
 						{((!isNextDisabled || !switches.continuous) && (
 							<TooltipButton
 								tooltip="Next"
-								icon={<NextIcon {...DEFAULT_ICON_SIZE} />}
+								icon={NextIcon}
+								iconSize={ICON_SIZE}
 								onClick={onNext}
 								disabled={isNextDisabled}
 							/>
 						)) || (
 							<TooltipButton
 								tooltip="Restart"
-								icon={<ReplayIcon {...DEFAULT_ICON_SIZE} />}
+								icon={ReplayIcon}
+								iconSize={ICON_SIZE}
 								onClick={onRestart}
 							/>
 						)}
