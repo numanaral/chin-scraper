@@ -2,6 +2,7 @@ import React from 'react';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 
 import Spacer from 'components/Spacer';
+import { getElementFromElementOrType } from 'utils/react';
 import { propTypes, defaultProps } from './types';
 
 /**
@@ -46,7 +47,7 @@ const Toggle = ({ value, onChange, options, size, ...rest }) => {
 				>
 					{elm.icon && (
 						<>
-							{elm.icon}
+							{getElementFromElementOrType(elm.icon)}
 							<Spacer direction="right" />
 						</>
 					)}
