@@ -1,11 +1,12 @@
 import React from 'react';
-import { InputAdornment, TextField, Typography } from '@material-ui/core';
+import { InputAdornment, TextField } from '@material-ui/core';
 
 import { speak } from 'utils/speech';
 import { SpeakIcon, SearchIcon } from 'icons';
 import TooltipButton from 'components/TooltipButton';
-import StyledContainer from './StyledContainer';
+import Spacer from 'components/Spacer';
 import { propTypes, defaultProps } from './types';
+import Notes from './Notes';
 
 const SearchForm = ({ input, onSubmit, onChange, loading }) => (
 	<StyledContainer>
@@ -45,35 +46,8 @@ const SearchForm = ({ input, onSubmit, onChange, loading }) => (
 					),
 				}}
 			/>
-			<br />
-			<Typography color="primary" variant="caption">
-				NOTE
-			</Typography>
-			{`: `}
-			<Typography variant="caption">
-				Recognized characters are
-				{` `}
-				<Typography color="primary" variant="caption">
-					Hanzi
-				</Typography>
-				{`, `}
-				<Typography color="primary" variant="caption">
-					comma
-				</Typography>
-				{`, `}
-				<Typography color="primary" variant="caption">
-					dot
-				</Typography>
-				{`, `}
-				<Typography color="primary" variant="caption">
-					exclamation mark
-				</Typography>
-				{`, and `}
-				<Typography color="primary" variant="caption">
-					question mark
-				</Typography>
-				.
-			</Typography>
+			<Spacer direction="bottom" spacing="2" />
+			<Notes />
 		</form>
 	</StyledContainer>
 );
