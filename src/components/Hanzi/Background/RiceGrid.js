@@ -1,11 +1,9 @@
-import useRenderedCount from 'hooks/useRenderedCount';
 import React, { forwardRef, memo } from 'react';
 
 import { propTypes, defaultProps } from './types';
 
 const RiceGrid = memo(
 	forwardRef(({ size, color, opacity }, ref) => {
-		useRenderedCount('Stroked');
 		const StyledLine = props => (
 			<line {...props} stroke={color} strokeOpacity={opacity} />
 		);

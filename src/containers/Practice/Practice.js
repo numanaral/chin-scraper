@@ -10,7 +10,6 @@ import {
 import styled from 'styled-components';
 
 import ContainerWithCenteredItems from 'components/ContainerWithCenteredItems';
-import useRenderedCount from 'hooks/useRenderedCount';
 import PageContainer from 'routes/PageContainer';
 import TooltipButton from 'components/TooltipButton';
 import {
@@ -47,7 +46,6 @@ const StyledTooltipButton = styled(TooltipButton)`
 `;
 
 const Practice = () => {
-	useRenderedCount('Practice');
 	const smAndDown = useMediaQuery(theme => theme.breakpoints.down('sm'));
 	const { ref: pageRef, size } = useOnResize();
 	const { switches, switchList } = useSwitchesWithPersistedConfig();
