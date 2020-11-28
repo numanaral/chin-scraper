@@ -40,8 +40,8 @@ const Learn = () => {
 		e.preventDefault();
 
 		// Trick to get to /da page in PWA
-		if (input === '/da') {
-			push(`${BASE_PATH}/da`);
+		if (input === '/dev-settings') {
+			push(`${BASE_PATH}/dev-settings`);
 		}
 
 		// eslint-disable-next-line max-len

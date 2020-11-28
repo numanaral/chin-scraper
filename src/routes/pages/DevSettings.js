@@ -41,7 +41,7 @@ const PREFERENCE_LIST = [
 	},
 ];
 
-const DisableAnalytics = () => (
+const DevSettings = () => (
 	<PageContainer>
 		<ContainerWithCenteredItems vertical horizontal>
 			<LazyList list={PREFERENCE_LIST} />
@@ -49,4 +49,4 @@ const DisableAnalytics = () => (
 	</PageContainer>
 );
 
-export default DisableAnalytics;
+export default DevSettings;
