@@ -4,12 +4,13 @@ import { InputAdornment, TextField } from '@material-ui/core';
 import { speak } from 'utils/speech';
 import { SpeakIcon, SearchIcon } from 'icons';
 import TooltipButton from 'components/TooltipButton';
+import ResponsiveCenteredContainer from 'components/ResponsiveCenteredContainer';
 import Spacer from 'components/Spacer';
 import { propTypes, defaultProps } from './types';
 import Notes from './Notes';
 
 const SearchForm = ({ input, onSubmit, onChange, loading }) => (
-	<StyledContainer>
+	<ResponsiveCenteredContainer>
 		<form onSubmit={onSubmit}>
 			<TextField
 				fullWidth
@@ -49,7 +50,7 @@ const SearchForm = ({ input, onSubmit, onChange, loading }) => (
 			<Spacer direction="bottom" spacing="2" />
 			<Notes />
 		</form>
-	</StyledContainer>
+	</ResponsiveCenteredContainer>
 );
 
 SearchForm.propTypes = propTypes;

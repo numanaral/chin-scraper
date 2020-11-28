@@ -1,31 +1,22 @@
-import React, { useState } from 'react';
-import { Box, Typography } from '@material-ui/core';
+import React from 'react';
+import { Typography } from '@material-ui/core';
 
+import ResponsiveCenteredContainer from 'components/ResponsiveCenteredContainer';
 import ContainerWithCenteredItems from 'components/ContainerWithCenteredItems';
+import PaperContainerWithSpacing from 'components/PaperContainerWithSpacing';
 import { propTypes, defaultProps } from './types';
-import ColoredPaper from './ColoredPaper';
 
-const TranslationResult = ({ original, translation, pinyin }) => {
-	const [isHovering, setIsHovering] = useState(false);
-	const onEnter = () => setIsHovering(true);
-	const onLeave = () => setIsHovering(false);
-
-	return (
+const TranslationResult = ({ original, translation, pinyin }) => (
+	<ResponsiveCenteredContainer>
 		<ContainerWithCenteredItems>
-			<ColoredPaper
-				elevation={(isHovering && 3) || 0}
-				onMouseEnter={onEnter}
-				onMouseLeave={onLeave}
-			>
-				<Box py={2} px={4} textAlign="left">
-					<Typography> {original} </Typography>
-					<Typography> {pinyin} </Typography>
-					<Typography> {translation} </Typography>
-				</Box>
-			</ColoredPaper>
+			<PaperContainerWithSpacing textAlign="center">
+				<Typography> {original} </Typography>
+				<Typography> {pinyin} </Typography>
+				<Typography> {translation} </Typography>
+			</PaperContainerWithSpacing>
 		</ContainerWithCenteredItems>
-	);
-};
+	</ResponsiveCenteredContainer>
+);
 
 TranslationResult.propTypes = propTypes;
 TranslationResult.defaultProps = defaultProps;
