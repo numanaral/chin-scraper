@@ -15,7 +15,12 @@ import { defaultProps, propTypes } from './types';
  * @component
  */
 const Spacer = ({ direction, spacing }) => (
-	<StyledWrapper $direction={direction} $spacing={parseInt(spacing, 10)} />
+	<StyledWrapper
+		$direction={direction}
+		$spacing={
+			(typeof spacing === 'string' && parseInt(spacing, 10)) || spacing
+		}
+	/>
 );
 
 Spacer.propTypes = propTypes;
