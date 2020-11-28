@@ -15,6 +15,7 @@ import LazyCardGrid from './CardGrid/Lazy';
 import Body from './Body';
 
 const Learn = () => {
+	const [pending, setPending] = useState(false);
 	const [input, setInput] = useState('');
 	const [sentences, setSentences] = useState({});
 	const [cards, setCards] = useState([]);
@@ -59,24 +60,32 @@ const Learn = () => {
 		const chineseInput = stripNonChineseChars(chineseInputWithPunctuation);
 
 		if (chineseInput) {
-			add(chineseInput);
-			setInput(chineseInputWithPunctuation);
-			const {
-				translation,
-				pinyin,
-				cards: resultCards,
-			} = await fetchAndParseTranslationResult(
-				chineseInputWithPunctuation
-			);
+			setPending(true);
+			try {
+				add(chineseInput);
+				setInput(chineseInputWithPunctuation);
+				const {
+					translation,
+					pinyin,
+					cards: resultCards,
+				} = await fetchAndParseTranslationResult(
+					chineseInputWithPunctuation
+				);
 
-			setSentences({
-				original: chineseInputWithPunctuation,
-				translation,
-				pinyin,
-			});
-			setCards(resultCards);
+				setSentences({
+					original: chineseInputWithPunctuation,
+					translation,
+					pinyin,
+				});
+				setCards(resultCards);
+			} catch (err) {
+				console.error(err.message);
+			} finally {
+				setPending(false);
+			}
 			return;
 		}
+
 		if (cards.length) resetCards();
 		setInput('');
 	};
@@ -90,6 +99,7 @@ const Learn = () => {
 					input={input}
 					onChange={onChange}
 					onSubmit={onSubmit}
+					loading={pending}
 				/>
 				{sentences.translation && <TranslationResult {...sentences} />}
 				<Spacer direction="bottom" spacing="2" />

@@ -7,7 +7,7 @@ import TooltipButton from 'components/TooltipButton';
 import StyledContainer from './StyledContainer';
 import { propTypes, defaultProps } from './types';
 
-const SearchForm = ({ input, onSubmit, onChange }) => (
+const SearchForm = ({ input, onSubmit, onChange, loading }) => (
 	<StyledContainer>
 		<form onSubmit={onSubmit}>
 			<TextField
@@ -36,6 +36,7 @@ const SearchForm = ({ input, onSubmit, onChange }) => (
 							<TooltipButton
 								tooltip="Search"
 								disabled={!input}
+								loading={loading}
 								color="primary"
 								icon={SearchIcon}
 								type="submit"
