@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Button as MuiButton, Tooltip, useMediaQuery } from '@material-ui/core';
 
 import { getElementFromElementOrType } from 'utils/react';
+import LoadingIndicator from 'components/LoadingIndicator';
 import { defaultProps, propTypes } from './types';
 import StyledIconButton from './StyledIconButton';
+import StyledLoadingIconButton from './StyledLoadingIconButton';
 
 /**
  * Text/Icon Button with Tooltip. If the text prop has value then
@@ -33,6 +35,7 @@ const TooltipButton = ({
 	type,
 	preventDefaultEvent,
 	displayTooltipOnClickForMobile,
+	loading,
 	// TextButton props
 	text,
 	variant,
@@ -74,7 +77,8 @@ const TooltipButton = ({
 			color={bg}
 			startIcon={getElementFromElementOrType(icon)}
 			onClick={wrappedOnClick}
-			disabled={disabled}
+			disabled={disabled || loading}
+			endIcon={(loading && <LoadingIndicator size="small" />) || null}
 			type={type}
 			{...rest}
 		>
@@ -83,11 +87,12 @@ const TooltipButton = ({
 	)) || (
 		<StyledIconButton
 			onClick={wrappedOnClick}
-			disabled={disabled}
+			disabled={disabled || loading}
 			type={type}
 			$bg={bg}
 			{...rest}
 		>
+			{loading && <StyledLoadingIconButton />}
 			{getElementFromElementOrType(icon)}
 		</StyledIconButton>
 	);

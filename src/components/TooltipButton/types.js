@@ -25,6 +25,7 @@ const propTypes = {
 	type: buttonTypes,
 	preventDefaultEvent: bool,
 	displayTooltipOnClickForMobile: bool,
+	loading: bool,
 	// ========== TextButton props ==========
 	/**
 	 * - Text to display in a text button
@@ -44,6 +45,7 @@ const defaultProps = {
 	type: 'button',
 	preventDefaultEvent: false,
 	displayTooltipOnClickForMobile: true,
+	loading: false,
 	// TextButton props
 	text: null,
 	variant: 'contained',
