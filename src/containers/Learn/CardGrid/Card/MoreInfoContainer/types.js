@@ -1,6 +1,4 @@
-import { array, bool, node, object, oneOfType } from 'prop-types';
-
-import { cardProps } from '../../types';
+import { array, arrayOf, bool, node, object, oneOfType } from 'prop-types';
 
 const detailGroupBodyPropTypes = {
 	body: oneOfType([object, array]),
@@ -19,8 +17,7 @@ const detailTitleDefaultProps = {
 };
 
 const moreInfoContainerPropTypes = {
-	isVisible: bool.isRequired,
-	...cardProps,
+	details: arrayOf(object),
 };
 const moreInfoContainerDefaultProps = {};
 

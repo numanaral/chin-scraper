@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import HanziWriter from 'hanzi-writer';
 
+import getHanziTrainerDetails, {
+	normalizeHanziTrainerDetails,
+} from 'api/hanziTrainerProApi';
 import { AnimatePresence } from 'framer-motion';
 import TooltipButton from 'components/TooltipButton';
 import { noop } from 'utils';
@@ -24,13 +28,18 @@ const WordActionGroup = ({
 	theme,
 	isFlipped,
 	setIsFlipped,
+	moreInfo,
+	setMoreInfo,
 	isChallengeMode,
 	setIsChallengeMode,
 	isFocusMode,
 	onSetFocusMode,
 	cardProps,
 }) => {
-	const { pinyin, hanzi } = cardProps;
+	const [pendingSpeechScraper, setPendingSpeechScraper] = useState(false);
+	const [pendingMoreInfo, setPendingMoreInfo] = useState(false);
+
+	const { hanzi, pinyin, translation } = cardProps;
 
 	const startQuiz = () => {
 		writer.quiz({
@@ -41,8 +50,55 @@ const WordActionGroup = ({
 			},
 		});
 	};
-	const onSpeak = () => trySpeakNative(hanzi, pinyin);
-	const onMoreInfo = () => setIsFlipped(v => !v);
+
+	const onSpeak = async () => {
+		try {
+			setPendingSpeechScraper(true);
+			await trySpeakNative(hanzi, pinyin);
+		} catch (err) {
+			console.error('Failed to speak');
+		} finally {
+			setPendingSpeechScraper(false);
+		}
+	};
+
+	const onMoreInfo = async () => {
+		// We only run this if it's not yet fetched and it's just being flipped
+		if (!isFlipped && !moreInfo.length) {
+			try {
+				setPendingMoreInfo(true);
+				// Get stroke details
+				const {
+					radStrokes,
+					strokes,
+				} = await HanziWriter.loadCharacterData(hanzi);
+
+				// Get more info
+				const hanziTrainerDetails = await getHanziTrainerDetails(
+					pinyin,
+					translation
+				);
+
+				setMoreInfo([
+					{
+						title: 'Stroke Details',
+						body: {
+							totalStrokeCount: strokes?.length || 'N/A',
+							radicalStrokeCount: radStrokes?.length || 'N/A',
+						},
+					},
+					...normalizeHanziTrainerDetails(hanziTrainerDetails, hanzi),
+				]);
+			} catch (err) {
+				console.error('Failed to load more info');
+			} finally {
+				setPendingMoreInfo(false);
+			}
+		}
+
+		setIsFlipped(v => !v);
+	};
+
 	const onFocusMode = () => {
 		if (isFocusMode) {
 			onSetFocusMode(false);
@@ -54,6 +110,7 @@ const WordActionGroup = ({
 			startQuiz();
 		}
 	};
+
 	const onHideOutline = () => {
 		if (isChallengeMode) writer.showOutline();
 		else writer.hideOutline();
@@ -85,11 +142,13 @@ const WordActionGroup = ({
 								tooltip="Hear it"
 								onClick={onSpeak}
 								icon={SpeakIcon}
+								loading={pendingSpeechScraper}
 							/>
 							<TooltipButton
 								tooltip="More Info"
 								onClick={onMoreInfo}
 								icon={InfoIcon}
+								loading={pendingMoreInfo}
 							/>
 						</>
 					)) || (

@@ -35,6 +35,8 @@ const Card = ({
 	const [isHovering, setIsHovering] = useState(false);
 	const [isFlipped, setIsFlipped] = useState(false);
 	const [isFocusMode, setIsFocusMode] = useState(false);
+	const [isChallengeMode, setIsChallengeMode] = useState(false);
+	const [moreInfo, setMoreInfo] = useState([]);
 
 	const onSetFocusMode = v => {
 		rewrite(text, {
@@ -44,7 +46,6 @@ const Card = ({
 		setIsChildInFocusMode(v);
 		setIsFocusMode(v);
 	};
-	const [isChallengeMode, setIsChallengeMode] = useState(false);
 
 	// Close open cards when when clicked elsewhere
 	const currentCard = useOuterClick(() => {
@@ -141,10 +142,7 @@ const Card = ({
 						variants={cardInnerContainerBackAnimationVariants}
 						animate={(isFlipped && 'isFlipped') || 'isNotFlipped'}
 					>
-						<MoreInfoContainer
-							isVisible={isFlipped}
-							{...cardProps}
-						/>
+						<MoreInfoContainer details={moreInfo} />
 					</CardInnerContainerBack>
 				</CardContainer>
 				{writer && (
@@ -155,6 +153,8 @@ const Card = ({
 						theme={theme}
 						isFlipped={isFlipped}
 						setIsFlipped={setIsFlipped}
+						moreInfo={moreInfo}
+						setMoreInfo={setMoreInfo}
 						isFocusMode={isFocusMode}
 						onSetFocusMode={onSetFocusMode}
 						isChallengeMode={isChallengeMode}
