@@ -31,62 +31,56 @@ const ComingSoon = () => (
 );
 const Switch = () => <MuiSwitch disabled />;
 
-const PREFERENCE_LIST = [
-	{
-		type: itemTypes.SECTION_TITLE_WITH_DIVIDER,
-		primaryText: 'VIEW SETTINGS',
-	},
-	{
-		primaryText: 'Theme',
-		icon: ThemeIcon,
-		secondaryAction: ThemeToggle,
-	},
-	{
-		primaryText: 'Hanzi stroke color',
-		icon: TranslateIcon,
-		secondaryAction: ComingSoon,
-	},
-	{
-		primaryText: 'Hanzi radical color',
-		icon: TranslateIcon,
-		secondaryAction: ComingSoon,
-	},
-	{
-		primaryText: 'Reset settings',
-		secondaryText: 'NOTE: This will revert all the preference changes',
-		icon: StorageIcon,
-		secondaryAction: LazyClearLocalStorageButton,
-	},
-	SPACER,
-	{
-		type: itemTypes.SECTION_TITLE_WITH_DIVIDER,
-		primaryText: 'ANIMATIONS',
-		secondaryText: 'Disable/Modify animations',
-		// icon: DashboardIcon,
-		// secondaryAction: DashboardViewToggle,
-	},
-	{
-		primaryText: 'Animations',
-		secondaryText: 'Turns on/off all the animations',
-		icon: AnimationIcon,
-		secondaryAction: Switch,
-		disabled: true,
-	},
-	{
-		primaryText: 'Enough with the shaking!',
-		secondaryText: 'Turn off that stupid shaking animation plis',
-		icon: SadIcon,
-		secondaryAction: Switch,
-		disabled: true,
-	},
-];
-
 const getPreferenceList = ({ themeProps }) => {
-	const list = [...PREFERENCE_LIST];
-	list.find(li => li.primaryText === 'Theme').secondaryAction = (
-		<ThemeToggle {...themeProps} />
-	);
-	return list;
+	return [
+		{
+			type: itemTypes.SECTION_TITLE_WITH_DIVIDER,
+			primaryText: 'VIEW SETTINGS',
+		},
+		{
+			primaryText: 'Theme',
+			icon: ThemeIcon,
+			// TODO: If I decide to add redux, won't need this complication here
+			// but it's not needed right now
+			secondaryAction: <ThemeToggle {...themeProps} />,
+		},
+		{
+			primaryText: 'Hanzi stroke color',
+			icon: TranslateIcon,
+			secondaryAction: ComingSoon,
+		},
+		{
+			primaryText: 'Hanzi radical color',
+			icon: TranslateIcon,
+			secondaryAction: ComingSoon,
+		},
+		{
+			primaryText: 'Reset settings',
+			secondaryText: 'NOTE: This will revert all the preference changes',
+			icon: StorageIcon,
+			secondaryAction: LazyClearLocalStorageButton,
+		},
+		SPACER,
+		{
+			type: itemTypes.SECTION_TITLE_WITH_DIVIDER,
+			primaryText: 'ANIMATIONS',
+			secondaryText: 'Disable/Modify animations',
+		},
+		{
+			primaryText: 'Animations',
+			secondaryText: 'Turns on/off all the animations',
+			icon: AnimationIcon,
+			secondaryAction: Switch,
+			disabled: true,
+		},
+		{
+			primaryText: 'Enough with the shaking!',
+			secondaryText: 'Turn off that stupid shaking animation plis',
+			icon: SadIcon,
+			secondaryAction: Switch,
+			disabled: true,
+		},
+	];
 };
 
 const Preferences = props => (
