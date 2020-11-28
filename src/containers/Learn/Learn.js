@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import useSearchQueries from 'store/firebase/hooks/useSearchQueries';
 import {
@@ -10,11 +11,13 @@ import SearchForm from 'components/SearchForm';
 import TranslationResult from 'components/TranslationResult';
 import Spacer from 'components/Spacer';
 import ContainerWithCenteredItems from 'components/ContainerWithCenteredItems';
+import { BASE_PATH } from 'routes/constants';
 import { fetchAndParseTranslationResult } from './utils';
 import LazyCardGrid from './CardGrid/Lazy';
 import Body from './Body';
 
 const Learn = () => {
+	const { push } = useHistory();
 	const [pending, setPending] = useState(false);
 	const [input, setInput] = useState('');
 	const [sentences, setSentences] = useState({});
@@ -35,6 +38,11 @@ const Learn = () => {
 
 	const onSubmit = async e => {
 		e.preventDefault();
+
+		// Trick to get to /da page in PWA
+		if (input === '/da') {
+			push(`${BASE_PATH}/da`);
+		}
 
 		// eslint-disable-next-line max-len
 		const previousChineseInputWithPunctuation = stripNonChineseAndNonSetPunctionationChars(
