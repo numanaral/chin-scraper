@@ -1,6 +1,6 @@
 import { bool, func, oneOf, string } from 'prop-types';
 
-import { icon, color, buttonVariant } from 'components/types';
+import { icon, color, iconSize, buttonVariant } from 'components/types';
 
 const buttonTypes = oneOf(['submit', 'reset', 'button']);
 
@@ -16,8 +16,7 @@ const propTypes = {
 	onClick: func,
 	/**
 	 * - Background color variant
-	 * - 'default' | 'primary' | 'secondary' |
-	 * 'error' | 'warning' | 'info' | 'success'
+	 * - 'default' | 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
 	 */
 	bg: color,
 	icon,
@@ -33,11 +32,18 @@ const propTypes = {
 	 */
 	text: string,
 	variant: buttonVariant,
+	// ========== IconButton props ==========
+	/**
+	 * - Icon size
+	 * - 'small' | 'large' | 'inherit' | 'default'
+	 * - 'inherit' loading size is same as default
+	 */
+	iconSize,
 };
 const defaultProps = {
-	// Tooltip props
+	// Tooltip defaultProps
 	interactive: false,
-	// Button props
+	// Button defaultProps
 	onClick: null,
 	bg: 'default',
 	icon: null,
@@ -46,9 +52,11 @@ const defaultProps = {
 	preventDefaultEvent: false,
 	displayTooltipOnClickForMobile: true,
 	loading: false,
-	// TextButton props
+	// TextButton defaultProps
 	text: null,
 	variant: 'contained',
+	// IconButton defaultProps
+	iconSize: 'default',
 };
 
 export { buttonTypes, propTypes, defaultProps };

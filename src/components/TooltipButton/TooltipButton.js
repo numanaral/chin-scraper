@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { cloneElement, useState } from 'react';
 import { Button as MuiButton, Tooltip, useMediaQuery } from '@material-ui/core';
 
 import { getElementFromElementOrType } from 'utils/react';
@@ -31,6 +31,7 @@ const TooltipButton = ({
 	onClick,
 	bg,
 	icon,
+	iconSize,
 	disabled,
 	type,
 	preventDefaultEvent,
@@ -92,8 +93,10 @@ const TooltipButton = ({
 			$bg={bg}
 			{...rest}
 		>
-			{loading && <StyledLoadingIconButton />}
-			{getElementFromElementOrType(icon)}
+			{loading && <StyledLoadingIconButton $iconSize={iconSize} />}
+			{cloneElement(getElementFromElementOrType(icon), {
+				fontSize: iconSize,
+			})}
 		</StyledIconButton>
 	);
 

@@ -18,7 +18,6 @@ const elementOrType = oneOfType([element, elementType]);
 const icon = elementOrType;
 
 /**
- * @implements { ReadonlyArray<T>, Color }
  * @returns { Requireable<T> }
  */
 const color = oneOf([
@@ -37,13 +36,16 @@ const color = oneOf([
 const direction = oneOf(['top', 'right', 'bottom', 'left']);
 
 /**
- * @implements { ReadonlyArray<T>, ButtonSize }
  * @returns { Requireable<T> }
  */
 const size = oneOf(['small', 'medium', 'large']);
 
 /**
- * @implements { ReadonlyArray<T>, ButtonVariant }
+ * @returns { Requireable<T> }
+ */
+const iconSize = oneOf(['default', 'inherit', 'large', 'small']);
+
+/**
  * @returns { Requireable<T> }
  */
 const buttonVariant = oneOf(['text', 'outlined', 'contained']);
@@ -68,4 +70,5 @@ export {
 	numberOrString,
 	refType,
 	theme,
+	iconSize,
 };
