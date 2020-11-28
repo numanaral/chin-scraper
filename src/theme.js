@@ -64,6 +64,10 @@ const ConstGlobalStyle = createGlobalStyle`
 			min-height: 24px;
 		}
 
+		ul {
+			padding-left: 20px;
+		}
+
 		/* #region SCROLLBARS */
 
 		* {
@@ -207,6 +211,15 @@ const getThemeOptions = mode => {
 			MuiSvgIcon: {
 				root: {
 					transition: THEME_COLOR_TRANSITION,
+				},
+			},
+			// Annoying border-radius added to MuiTextField with type="search"
+			// Looks weird when there is a startAdornment or endAdornment
+			MuiOutlinedInput: {
+				input: {
+					'&:-webkit-autofill': {
+						borderRadius: '0 !important',
+					},
 				},
 			},
 			MuiListItem: {

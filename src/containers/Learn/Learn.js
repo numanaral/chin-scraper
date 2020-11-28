@@ -110,7 +110,7 @@ const Learn = () => {
 					loading={pending}
 				/>
 				{sentences.translation && <TranslationResult {...sentences} />}
-				<Spacer direction="bottom" spacing="2" />
+				<Spacer direction="bottom" spacing={2.5} />
 				<LazyCardGrid cards={cards} />
 			</ContainerWithCenteredItems>
 		</Body>

@@ -33,6 +33,7 @@ export {
 	ArrowForward as NextIcon,
 	Send as SubmitIcon,
 	Settings as SettingsIcon,
+	Close as CloseIcon,
 } from '@material-ui/icons';
 
 const MedalIcon = <FontAwesomeIcon icon={faMedal} />;
