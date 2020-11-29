@@ -20,19 +20,22 @@ const Spacing = () => (
 const About = () => (
 	<PageContainer>
 		<Grid>
-			<TypographyWrapper> Translated by: </TypographyWrapper>
+			<TypographyWrapper> Translated by </TypographyWrapper>
 			<LinkWrapper href="https://translate.google.com/">
 				Google Translate
 			</LinkWrapper>
 			<Spacing />
-			<TypographyWrapper> Hanzi Writer & Quiz by: </TypographyWrapper>
+			<TypographyWrapper>
+				Stroke animations & Drawing Mode by{` `}
+			</TypographyWrapper>
 			<LinkWrapper href="https://hanziwriter.org/">
 				Hanzi Writer
 			</LinkWrapper>
 			<Spacing />
 			<TypographyWrapper>
-				Character &quot;More Info&quot; scraped from:{' '}
+				More Info on characters & Native pronunciation{` `}
 			</TypographyWrapper>
+
 			<LinkWrapper href="https://dictionary.hantrainerpro.com/">
 				Han Trainer Pro
 			</LinkWrapper>
@@ -49,7 +52,7 @@ const About = () => (
 				Flat Icon
 			</LinkWrapper>
 			<Spacing />
-			<TypographyWrapper> App Created By: </TypographyWrapper>
+			<TypographyWrapper> App Created By </TypographyWrapper>
 			<LinkWrapper href="https://numanaral.github.io/">
 				Numan Aral
 			</LinkWrapper>
