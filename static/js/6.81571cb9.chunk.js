@@ -1,0 +1,1 @@
+(this["webpackJsonpchin-205"]=this["webpackJsonpchin-205"]||[]).push([[6],{298:function(n,t,c){"use strict";c.r(t);var e=c(12),i=c(3),r=(c(0),c(10)),u=c(204);function s(){var n=Object(e.a)(["\n\theight: 30px;\n"]);return s=function(){return n},n}var a=r.c.div(s());t.default=function(){return Object(i.jsx)(u.a,{children:Object(i.jsx)(a,{})})}}}]);
