@@ -8,9 +8,9 @@
     "static/js/5.3e73ed8e.chunk.js": "/chin-scraper/static/js/5.3e73ed8e.chunk.js",
     "static/js/6.81571cb9.chunk.js": "/chin-scraper/static/js/6.81571cb9.chunk.js",
     "static/js/7.46bdac79.chunk.js": "/chin-scraper/static/js/7.46bdac79.chunk.js",
-    "main.js": "/chin-scraper/static/js/main.0c5f2453.chunk.js",
-    "runtime-main.js": "/chin-scraper/static/js/runtime-main.385d9df3.js",
-    "static/js/10.5c39ce99.chunk.js": "/chin-scraper/static/js/10.5c39ce99.chunk.js",
+    "main.js": "/chin-scraper/static/js/main.9f92e07d.chunk.js",
+    "runtime-main.js": "/chin-scraper/static/js/runtime-main.dc1f3ed0.js",
+    "static/js/10.f32f83df.chunk.js": "/chin-scraper/static/js/10.f32f83df.chunk.js",
     "static/js/11.b7b22361.chunk.js": "/chin-scraper/static/js/11.b7b22361.chunk.js",
     "static/js/12.1de5775d.chunk.js": "/chin-scraper/static/js/12.1de5775d.chunk.js",
     "static/js/13.698f20a7.chunk.js": "/chin-scraper/static/js/13.698f20a7.chunk.js",
@@ -20,10 +20,10 @@
     "static/js/17.201eb000.chunk.js": "/chin-scraper/static/js/17.201eb000.chunk.js",
     "static/js/18.037188c0.chunk.js": "/chin-scraper/static/js/18.037188c0.chunk.js",
     "static/js/19.a1459cd3.chunk.js": "/chin-scraper/static/js/19.a1459cd3.chunk.js",
-    "static/js/20.41bddb9f.chunk.js": "/chin-scraper/static/js/20.41bddb9f.chunk.js",
+    "static/js/20.f0b34542.chunk.js": "/chin-scraper/static/js/20.f0b34542.chunk.js",
     "static/js/21.872d1c5f.chunk.js": "/chin-scraper/static/js/21.872d1c5f.chunk.js",
     "static/js/22.aaad08c2.chunk.js": "/chin-scraper/static/js/22.aaad08c2.chunk.js",
-    "static/js/23.ddf27f0e.chunk.js": "/chin-scraper/static/js/23.ddf27f0e.chunk.js",
+    "static/js/23.5370f9f5.chunk.js": "/chin-scraper/static/js/23.5370f9f5.chunk.js",
     "static/js/24.2bd765b3.chunk.js": "/chin-scraper/static/js/24.2bd765b3.chunk.js",
     "static/js/25.f50feac2.chunk.js": "/chin-scraper/static/js/25.f50feac2.chunk.js",
     "static/js/26.c748c315.chunk.js": "/chin-scraper/static/js/26.c748c315.chunk.js",
@@ -40,9 +40,9 @@
     "index.html": "/chin-scraper/index.html",
     "service-worker.js": "/chin-scraper/service-worker.js",
     "static/js/0.a6303cd5.chunk.js.LICENSE.txt": "/chin-scraper/static/js/0.a6303cd5.chunk.js.LICENSE.txt",
-    "static/js/10.5c39ce99.chunk.js.LICENSE.txt": "/chin-scraper/static/js/10.5c39ce99.chunk.js.LICENSE.txt",
-    "static/js/20.41bddb9f.chunk.js.LICENSE.txt": "/chin-scraper/static/js/20.41bddb9f.chunk.js.LICENSE.txt",
-    "static/js/23.ddf27f0e.chunk.js.LICENSE.txt": "/chin-scraper/static/js/23.ddf27f0e.chunk.js.LICENSE.txt",
+    "static/js/10.f32f83df.chunk.js.LICENSE.txt": "/chin-scraper/static/js/10.f32f83df.chunk.js.LICENSE.txt",
+    "static/js/20.f0b34542.chunk.js.LICENSE.txt": "/chin-scraper/static/js/20.f0b34542.chunk.js.LICENSE.txt",
+    "static/js/23.5370f9f5.chunk.js.LICENSE.txt": "/chin-scraper/static/js/23.5370f9f5.chunk.js.LICENSE.txt",
     "static/js/24.2bd765b3.chunk.js.LICENSE.txt": "/chin-scraper/static/js/24.2bd765b3.chunk.js.LICENSE.txt",
     "static/js/25.f50feac2.chunk.js.LICENSE.txt": "/chin-scraper/static/js/25.f50feac2.chunk.js.LICENSE.txt",
     "static/js/26.c748c315.chunk.js.LICENSE.txt": "/chin-scraper/static/js/26.c748c315.chunk.js.LICENSE.txt",
@@ -53,8 +53,8 @@
     "static/media/EmperorLogo.5f9ab40d.svg": "/chin-scraper/static/media/EmperorLogo.5f9ab40d.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.385d9df3.js",
-    "static/js/10.5c39ce99.chunk.js",
-    "static/js/main.0c5f2453.chunk.js"
+    "static/js/runtime-main.dc1f3ed0.js",
+    "static/js/10.f32f83df.chunk.js",
+    "static/js/main.9f92e07d.chunk.js"
   ]
 }
