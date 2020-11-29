@@ -93,7 +93,6 @@ Studying Chinese made easy!
 - [ ] Add more examples to **More Info** option for each character in **Learn**
 
 &nbsp;
----
 ## Sources:
 - Translated by [Google Translate](https://translate.google.com/)
 - Stroke animations & Drawing Mode by [Hanzi Writer](https://github.com/chanind/hanzi-writer/)
