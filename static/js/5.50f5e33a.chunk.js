@@ -1,0 +1,2 @@
+(this["webpackJsonpchin-205"]=this["webpackJsonpchin-205"]||[]).push([[5],{259:function(t,e,c){"use strict";c.r(e);var s=c(5),n=c(3),i=(c(0),c(175)),a=c(221),r=c(243),u=function(t){return Object(n.jsx)(i.a,{children:Object(n.jsx)(a.a,Object(s.a)({},t))})};u.defaultProps=r.sectionTitleDefaultProps,e.default=u}}]);
+//# sourceMappingURL=5.50f5e33a.chunk.js.map
