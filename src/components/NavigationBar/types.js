@@ -6,7 +6,7 @@ const navigationItemProps = {
 	label: string.isRequired,
 	tooltip: string,
 	to: string,
-	icon: icon.isRequired,
+	icon,
 	onClick: func,
 	disabled: bool,
 };
@@ -16,7 +16,10 @@ const sharedNavigationPropTypes = {
 	onLocationPush: func.isRequired,
 };
 
-const sharedNavigationTypesDefaultProps = {};
+const sharedNavigationTypesDefaultProps = {
+	disabled: false,
+	icon: null,
+};
 
 const topNavigationPropTypes = {
 	...sharedNavigationPropTypes,

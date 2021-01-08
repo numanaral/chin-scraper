@@ -17,18 +17,17 @@ import {
 const elementOrType = oneOfType([element, elementType]);
 const icon = elementOrType;
 
+const severityOptions = ['error', 'warning', 'info', 'success'];
+
 /**
  * @returns { Requireable<T> }
  */
-const color = oneOf([
-	'default',
-	'primary',
-	'secondary',
-	'error',
-	'warning',
-	'info',
-	'success',
-]);
+const severity = oneOf(severityOptions);
+
+/**
+ * @returns { Requireable<T> }
+ */
+const color = oneOf(['default', 'primary', 'secondary', ...severityOptions]);
 
 /**
  * @returns { Requireable<T> }
@@ -63,6 +62,7 @@ const theme = object;
 export {
 	elementOrType,
 	icon,
+	severity,
 	color,
 	direction,
 	size,

@@ -1,4 +1,4 @@
-import { doesNotExist } from 'containers/Learn/utils';
+import { doesNotExist } from 'utils';
 
 const getLocalStorageItem = key => JSON.parse(window.localStorage.getItem(key));
 
@@ -13,9 +13,14 @@ const clearLocalStorageItem = key => {
 	}
 };
 
-const setLocalStorageItem = (key, value) => {
+/** @see https://usehooks.com/useLocalStorage/ */
+const setLocalStorageItem = (key, value, storedValue) => {
 	try {
-		window.localStorage.setItem(key, JSON.stringify(value));
+		// Allow value to be a function so we have same API as useState
+		const valueToStore =
+			value instanceof Function ? value(storedValue) : value;
+		// Save to local storage
+		window.localStorage.setItem(key, JSON.stringify(valueToStore));
 
 		return value;
 	} catch (ex) {
@@ -37,7 +42,7 @@ const updateLocalStorageItem = (key, value) => {
 		);
 		return;
 	}
-	setLocalStorageItem(key, value);
+	if (lastValue) setLocalStorageItem(key, value);
 };
 
 const getOrSetLocalStorageItem = (key, value) => {

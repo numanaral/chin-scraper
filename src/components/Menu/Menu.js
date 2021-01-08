@@ -11,6 +11,7 @@ import {
 import styled from 'styled-components';
 
 import { getElementFromElementOrType } from 'utils/react';
+import TooltipButton from 'components/TooltipButton';
 import { propTypes, defaultProps } from './types';
 
 const StyleCheckbox = styled(Checkbox)`
@@ -18,14 +19,16 @@ const StyleCheckbox = styled(Checkbox)`
 `;
 
 const StyleListItemIcon = styled(ListItemIcon)`
-	${({ theme, $small, $isSelected }) =>
-		(($small && `min-width: ${theme.spacing(5)}px;`) || '') +
-		(($isSelected && `color: ${theme.palette.primary.main}`) || '')}
+	${({ theme, $small, $isSelected }) => `
+		${($small && `min-width: ${theme.spacing(5)}px;`) || ''}
+		${($isSelected && `color: ${theme.palette.primary.main}`) || ''}
+	`}
 `;
 
 const StyleListItemText = styled(ListItemText)`
-	${({ theme, $isSelected }) =>
-		($isSelected && `color: ${theme.palette.primary.main}`) || ''}
+	${({ theme, $isSelected }) => `
+		${($isSelected && `color: ${theme.palette.primary.main}`) || ''}
+	`}
 `;
 
 const Menu = ({
@@ -39,6 +42,8 @@ const Menu = ({
 	small,
 	labelKey,
 	valueKey,
+	iconMenu,
+	menuProps,
 	...rest
 }) => {
 	const optionIsObject = typeof options[0] === 'object';
@@ -68,28 +73,36 @@ const Menu = ({
 
 	return (
 		<>
-			<List component="nav" aria-label={`List-${label}`} {...rest}>
-				<ListItem
-					button
-					aria-haspopup="true"
-					aria-controls={`List-item-${label}`}
-					aria-label={label}
+			{(!iconMenu && (
+				<List component="nav" aria-label={`List-${label}`} {...rest}>
+					<ListItem
+						button
+						aria-haspopup="true"
+						aria-controls={`List-item-${label}`}
+						aria-label={label}
+						onClick={handleClickListItem}
+						dense={small}
+					>
+						{icon && (
+							<StyleListItemIcon $small={small}>
+								{getElementFromElementOrType(icon)}
+							</StyleListItemIcon>
+						)}
+						<ListItemText
+							primary={label}
+							{...(displaySelected && {
+								secondary: selectedOptionLabel || 'N/A',
+							})}
+						/>
+					</ListItem>
+				</List>
+			)) || (
+				<TooltipButton
+					tooltip={label}
 					onClick={handleClickListItem}
-					dense={small}
-				>
-					{icon && (
-						<StyleListItemIcon $small={small}>
-							{getElementFromElementOrType(icon)}
-						</StyleListItemIcon>
-					)}
-					<ListItemText
-						primary={label}
-						{...(displaySelected && {
-							secondary: selectedOptionLabel || 'N/A',
-						})}
-					/>
-				</ListItem>
-			</List>
+					icon={icon}
+				/>
+			)}
 			<MuiMenu
 				title={label}
 				id={`lock-menu-${label}`}
@@ -106,6 +119,7 @@ const Menu = ({
 					vertical: 'top',
 					horizontal: 'center',
 				}}
+				{...menuProps}
 			>
 				{options.map(option => {
 					let optionLabel = option;
@@ -138,13 +152,7 @@ const Menu = ({
 									$isSelected={isSelected}
 									$small={small}
 								>
-									{
-										// createElement(
-										getElementFromElementOrType(optionIcon)
-										// getElementFromElementOrType(optionIcon),
-										// { fontSize: 'small' }
-										// )
-									}
+									{getElementFromElementOrType(optionIcon)}
 								</StyleListItemIcon>
 							)}
 							<StyleListItemText $isSelected={isSelected}>

@@ -36,6 +36,6 @@ export {
 	Close as CloseIcon,
 } from '@material-ui/icons';
 
-const MedalIcon = <FontAwesomeIcon icon={faMedal} />;
-const LearnIcon = <FontAwesomeIcon icon={faLeanpub} />;
+const MedalIcon = props => <FontAwesomeIcon icon={faMedal} {...props} />;
+const LearnIcon = props => <FontAwesomeIcon icon={faLeanpub} {...props} />;
 export { MedalIcon, LearnIcon };

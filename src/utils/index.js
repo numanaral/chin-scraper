@@ -15,4 +15,6 @@ const pascalToSentence = str =>
 
 const noop = () => null;
 
-export { firstCapital, pascalToSentence, noop };
+const doesNotExist = value => value === null || value === undefined;
+
+export { firstCapital, pascalToSentence, noop, doesNotExist };

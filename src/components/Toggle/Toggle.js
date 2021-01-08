@@ -3,6 +3,7 @@ import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 
 import Spacer from 'components/Spacer';
 import { getElementFromElementOrType } from 'utils/react';
+import { doesNotExist } from 'utils';
 import { propTypes, defaultProps } from './types';
 
 /**
@@ -33,7 +34,7 @@ import { propTypes, defaultProps } from './types';
  */
 const Toggle = ({ value, onChange, options, size, ...rest }) => {
 	const handleOnChange = (_, newValue) => {
-		if (value === newValue) return;
+		if (doesNotExist(newValue) || value === newValue) return;
 		onChange(newValue);
 	};
 	return (

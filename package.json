@@ -9,13 +9,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:a": "node internals/scripts/analyze.js",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "lint": "eslint src/*.js",
-    "lint:fix": "npm run lint -- --fix",
-    "lint:f": "npm run lint:fix"
+    "lint": "eslint src/**/*.js",
+    "eslint:fix": "npm run lint --fix",
+    "prettier:fix": "prettier --write src/**/*.js",
+    "lint:f": "npm run eslint:fix && npm run prettier:fix",
+    "lint:fp": "npm run prettier:fix",
+    "predeploy": "npm run lint:f && npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",

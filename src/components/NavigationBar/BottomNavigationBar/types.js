@@ -23,7 +23,7 @@ const bottomNavigationBarItemsPropTypes = {
 };
 
 const bottomNavigationBarItemsDefaultProps = {
-	disabled: false,
+	...sharedNavigationTypesDefaultProps,
 };
 
 const otherPagesMenuPropTypes = {

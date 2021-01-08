@@ -20,6 +20,14 @@ const GreenCaption = styled(Caption)`
 	`}
 `;
 
+const RECOGNIZED_CHARACTER_TYPES = [
+	'hanzi',
+	'comma',
+	'dot',
+	'exclamation mark',
+	'question mark',
+];
+const CHAR_TYPE_LENGTH = RECOGNIZED_CHARACTER_TYPES.length;
 const NOTES_ARE_DISMISSED_LOCAL_STORAGE_KEY = 'notesAreDismissed';
 const Notes = () => {
 	const [notesAreDismissed, setNotesAreDismissed] = useLocalStorage(
@@ -34,17 +42,16 @@ const Notes = () => {
 						<PrimaryCaption>Notes: </PrimaryCaption>
 					</ContainerWithCenteredItems>
 					<Divider />
+					{/* eslint-disable max-len, prettier/prettier */}
 					<ul>
 						<Caption component="li">
-							Recognized characters are{` `}
-							<SecondaryCaption>hanzi</SecondaryCaption> {`, `}
-							<SecondaryCaption>comma</SecondaryCaption> {`, `}
-							<SecondaryCaption>dot</SecondaryCaption> {`, `}
-							<SecondaryCaption>
-								exclamation mark
-							</SecondaryCaption>{' '}
-							{`, and `}
-							<SecondaryCaption>question mark</SecondaryCaption>.
+							Recognized character types are{` `}
+							{RECOGNIZED_CHARACTER_TYPES.map((type, ind) => (
+								<>
+									<SecondaryCaption key={type}>{type}</SecondaryCaption> 
+									{ind < CHAR_TYPE_LENGTH - 2 && `, ` || ind < CHAR_TYPE_LENGTH - 1 && ', and ' || '.'}
+								</>
+							))}
 						</Caption>
 						<Caption component="li">
 							<GreenCaption>Green color</GreenCaption> {` `}
@@ -52,27 +59,8 @@ const Notes = () => {
 							{` `} <GreenCaption>radical</GreenCaption> {` `}
 							in the hanzi drawings.
 						</Caption>
-						<Caption component="li">
-							The server is hosted on a free provider so
-							{` `}
-							<SecondaryCaption>
-								after inactivity, the server will start
-								hibernating
-							</SecondaryCaption>
-							{`. `}
-							<ul>
-								<Caption component="li">
-									This means that if you happen to be the
-									first person to wake it up,{` `}
-									<SecondaryCaption>
-										your first request will take a little
-										while to load
-									</SecondaryCaption>
-									.
-								</Caption>
-							</ul>
-						</Caption>
 					</ul>
+					{/* eslint-enable max-len, prettier/prettier */}
 					<ContainerWithCenteredItems>
 						<TooltipButton
 							tooltip="Dismiss Notes"

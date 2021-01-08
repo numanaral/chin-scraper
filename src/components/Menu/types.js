@@ -1,4 +1,12 @@
-import { bool, string, shape, oneOfType, arrayOf, func } from 'prop-types';
+import {
+	bool,
+	string,
+	shape,
+	oneOfType,
+	arrayOf,
+	func,
+	object,
+} from 'prop-types';
 
 import { icon } from 'components/types';
 
@@ -24,6 +32,8 @@ const propTypes = {
 	small: bool,
 	labelKey: string,
 	valueKey: string,
+	iconMenu: bool,
+	menuProps: object,
 };
 
 const defaultProps = {
@@ -34,6 +44,8 @@ const defaultProps = {
 	small: false,
 	labelKey: 'label',
 	valueKey: 'value',
+	iconMenu: false,
+	menuProps: {},
 };
 
 export { optionType, selectedOptionType, optionsType, propTypes, defaultProps };

@@ -53,7 +53,7 @@ const About = () => (
 			</LinkWrapper>
 			<Spacing />
 			<TypographyWrapper> App Created By </TypographyWrapper>
-			<LinkWrapper href="https://numanaral.github.io/">
+			<LinkWrapper href="https://numanaral.github.io/?ref=chin-scraper">
 				Numan Aral
 			</LinkWrapper>
 		</Grid>

@@ -44,6 +44,4 @@ const fetchAndParseTranslationResult = async currentChars => {
 	};
 };
 
-const doesNotExist = value => value === null || value === undefined;
-
-export { fetchAndParseTranslationResult, doesNotExist };
+export { fetchAndParseTranslationResult };
