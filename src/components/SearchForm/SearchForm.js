@@ -9,7 +9,7 @@ import Spacer from 'components/Spacer';
 import { propTypes, defaultProps } from './types';
 import Notes from './Notes';
 
-const SearchForm = ({ input, onSubmit, onChange, loading }) => (
+const SearchForm = ({ input, onSubmit, onChange, loading, error }) => (
 	<ResponsiveCenteredContainer>
 		<form onSubmit={onSubmit}>
 			<TextField
@@ -22,6 +22,8 @@ const SearchForm = ({ input, onSubmit, onChange, loading }) => (
 				value={input}
 				name="chinese-character"
 				onChange={onChange}
+				error={!!error}
+				helperText={error}
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position="start">

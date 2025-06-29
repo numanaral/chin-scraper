@@ -50,15 +50,15 @@ const Notes = () => {
 						<Caption component="li">
 							Recognized character types are{` `}
 							{RECOGNIZED_CHARACTER_TYPES.map((type, ind) => (
-								<>
-									<ColoredCaption $color="error" key={type}>
+								<React.Fragment key={type}>
+									<ColoredCaption $color="error">
 										{type}
 									</ColoredCaption>
 									{(ind < CHAR_TYPE_LENGTH - 2 && `, `) ||
 										(ind < CHAR_TYPE_LENGTH - 1 &&
 											', and ') ||
 										'.'}
-								</>
+								</React.Fragment>
 							))}
 						</Caption>
 						<Caption component="li">

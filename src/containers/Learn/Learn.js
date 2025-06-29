@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import useSearchQueries from 'store/firebase/hooks/useSearchQueries';
@@ -12,6 +12,7 @@ import TranslationResult from 'components/TranslationResult';
 import Spacer from 'components/Spacer';
 import ContainerWithCenteredItems from 'components/ContainerWithCenteredItems';
 import { BASE_PATH } from 'routes/constants';
+import { getErrorMessage } from 'api/utils';
 import { fetchAndParseTranslationResult } from './utils';
 import LazyCardGrid from './CardGrid/Lazy';
 import Body from './Body';
@@ -19,6 +20,7 @@ import Body from './Body';
 const Learn = () => {
 	const { push } = useHistory();
 	const [pending, setPending] = useState(false);
+	const [error, setError] = useState('');
 	const [input, setInput] = useState('');
 	const [sentences, setSentences] = useState({});
 	const [cards, setCards] = useState([]);
@@ -56,6 +58,7 @@ const Learn = () => {
 		// Don't search twice using the same query
 		// eslint-disable-next-line max-len
 		if (
+			!error &&
 			previousChineseInputWithPunctuation === chineseInputWithPunctuation
 		) {
 			// If there are unrecognized chars, reset them
@@ -70,6 +73,7 @@ const Learn = () => {
 		if (chineseInput) {
 			setPending(true);
 			try {
+				setError('');
 				add(chineseInput);
 				setInput(chineseInputWithPunctuation);
 				const {
@@ -87,7 +91,7 @@ const Learn = () => {
 				});
 				setCards(resultCards);
 			} catch (err) {
-				console.error(err.message);
+				setError(getErrorMessage(err));
 			} finally {
 				setPending(false);
 			}
@@ -98,8 +102,6 @@ const Learn = () => {
 		setInput('');
 	};
 
-	useEffect(() => {}, [input]);
-
 	return (
 		<Body>
 			<ContainerWithCenteredItems>
@@ -108,6 +110,7 @@ const Learn = () => {
 					onChange={onChange}
 					onSubmit={onSubmit}
 					loading={pending}
+					error={error}
 				/>
 				{sentences.translation && <TranslationResult {...sentences} />}
 				<Spacer direction="bottom" spacing={2.5} />
