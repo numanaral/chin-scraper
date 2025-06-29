@@ -10,13 +10,9 @@ import PaperContainerWithSpacing from 'components/PaperContainerWithSpacing';
 
 const Caption = props => <Typography variant="caption" {...props} />;
 
-const PrimaryCaption = props => <Caption color="primary" {...props} />;
-
-const SecondaryCaption = props => <Caption color="secondary" {...props} />;
-
-const GreenCaption = styled(Caption)`
-	${({ theme }) => `
-		color: ${theme.palette.success.main};
+const ColoredCaption = styled(Caption)`
+	${({ theme, $color }) => `
+		color: ${theme.palette[$color].main};
 	`}
 `;
 
@@ -39,24 +35,43 @@ const Notes = () => {
 			<ContainerWithCenteredItems horizontal>
 				<PaperContainerWithSpacing width="100%">
 					<ContainerWithCenteredItems horizontal>
-						<PrimaryCaption>Notes: </PrimaryCaption>
+						<ColoredCaption $color="primary">Notes:</ColoredCaption>
 					</ContainerWithCenteredItems>
 					<Divider />
 					{/* eslint-disable max-len, prettier/prettier */}
 					<ul>
 						<Caption component="li">
+							<ColoredCaption $color="warning">
+								If there is a delay in the search results
+							</ColoredCaption>
+							, it is likely that the backend server is sleeping.
+							You can try again in a minute.
+						</Caption>
+						<Caption component="li">
 							Recognized character types are{` `}
 							{RECOGNIZED_CHARACTER_TYPES.map((type, ind) => (
 								<>
-									<SecondaryCaption key={type}>{type}</SecondaryCaption> 
-									{ind < CHAR_TYPE_LENGTH - 2 && `, ` || ind < CHAR_TYPE_LENGTH - 1 && ', and ' || '.'}
+									<ColoredCaption $color="error" key={type}>
+										{type}
+									</ColoredCaption>
+									{(ind < CHAR_TYPE_LENGTH - 2 && `, `) ||
+										(ind < CHAR_TYPE_LENGTH - 1 &&
+											', and ') ||
+										'.'}
 								</>
 							))}
 						</Caption>
 						<Caption component="li">
-							<GreenCaption>Green color</GreenCaption> {` `}
+							<ColoredCaption $color="success">
+								Green color
+							</ColoredCaption>
+							{` `}
 							represents the
-							{` `} <GreenCaption>radical</GreenCaption> {` `}
+							{` `}
+							<ColoredCaption $color="success">
+								radical
+							</ColoredCaption>
+							{` `}
 							in the hanzi drawings.
 						</Caption>
 					</ul>
