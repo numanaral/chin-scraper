@@ -39,7 +39,7 @@ const WordActionGroup = ({
 	const [pendingSpeechScraper, setPendingSpeechScraper] = useState(false);
 	const [pendingMoreInfo, setPendingMoreInfo] = useState(false);
 
-	const { hanzi, pinyin, translation } = cardProps;
+	const { hanzi, pinyin } = cardProps;
 
 	const startQuiz = () => {
 		writer.quiz({

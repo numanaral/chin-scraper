@@ -12,7 +12,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
-    "eslint:fix": "npm run lint --fix",
+    "eslint:fix": "npm run lint -- --fix",
     "prettier:fix": "prettier --write src/**/*.js",
     "lint:f": "npm run eslint:fix && npm run prettier:fix",
     "lint:fp": "npm run prettier:fix",
