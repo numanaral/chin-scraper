@@ -15,13 +15,22 @@ import {
 /* eslint-disable prettier/prettier */
 const LazyLearn = loadable(() => import(`routes/pages/Learn`), 'large');
 const LazyPractice = loadable(() => import(`routes/pages/Practice`), 'large');
-const LazyPreferences = loadable(() => import(`routes/pages/Preferences`), 'large');
+const LazyPreferences = loadable(
+	() => import(`routes/pages/Preferences`),
+	'large'
+);
 const LazyAnalytics = loadable(() => import(`routes/pages/Analytics`), 'large');
 const LazyAbout = loadable(() => import(`routes/pages/About`), 'large');
-const LazyDevSettings = loadable(() => import(`routes/pages/DevSettings`), 'large');
+const LazyDevSettings = loadable(
+	() => import(`routes/pages/DevSettings`),
+	'large'
+);
 
 const LazyNotFound = loadable(() => import(`./pages/NotFound`), 'large');
-const LazyUnauthorized = loadable(() => import(`./pages/Unauthorized`), 'large');
+const LazyUnauthorized = loadable(
+	() => import(`./pages/Unauthorized`),
+	'large'
+);
 const LazyLogin = loadable(() => import(`./pages/Login`), 'large');
 /* eslint-enable prettier/prettier */
 
