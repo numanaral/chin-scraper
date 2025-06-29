@@ -87,10 +87,12 @@ const getHanziTrainerDetails = async hanzi => {
 		 */
 		try {
 			const exampleMatch = getMatchedNode(MATCH_WORD_EXAMPLE, false);
-			const exampleNodes = [...exampleMatch.querySelectorAll('i')];
+			const exampleNodes = [...exampleMatch.querySelectorAll('i')].slice(
+				-2
+			);
 
 			details.example = {
-				pinyin: `${exampleNodes[0].innerText.split('.')[1]}.`,
+				pinyin: exampleNodes[0].innerText,
 				translation: exampleNodes[1].children[0].innerText,
 			};
 		} catch (err) {
