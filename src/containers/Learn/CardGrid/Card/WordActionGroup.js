@@ -74,10 +74,7 @@ const WordActionGroup = ({
 				} = await HanziWriter.loadCharacterData(hanzi);
 
 				// Get more info
-				const hanziTrainerDetails = await getHanziTrainerDetails(
-					pinyin,
-					translation
-				);
+				const hanziTrainerDetails = await getHanziTrainerDetails(hanzi);
 
 				setMoreInfo([
 					{

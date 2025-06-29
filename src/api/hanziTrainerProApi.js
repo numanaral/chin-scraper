@@ -1,7 +1,7 @@
-import { removeTones } from 'utils/chinese';
 import { isEmptyObject } from 'utils/object';
 import { parseHtmlFromResponse, matchElementByText } from 'utils/dom';
 import proxy from './proxyApi';
+import hanziTrainerCharLinks from './hanziTrainerCharLinks.json';
 
 const API_NAME = 'Hanzi Trainer Pro';
 const API_URL_PREFIX =
@@ -12,18 +12,18 @@ const MATCH_WORD_EXAMPLE = 'Chinese Pinyin example sentence with';
 const MATCH_WORD_WORDS_CONTAINING =
 	'Chinese example words containing the character';
 
-const getApiUrl = async (pinyin, translation) => {
-	const tonelessPinyin = removeTones(pinyin);
-	return `${API_URL_PREFIX}${tonelessPinyin}_${translation}${API_URL_POSTFIX}`;
+const getApiUrl = async hanzi => {
+	const linkId = hanziTrainerCharLinks[hanzi];
+	return `${API_URL_PREFIX}${linkId}${API_URL_POSTFIX}`;
 };
 
 /**
  * @see
  *
- * @param {String} pinyin Pinyin to search
+ * @param {String} hanzi Hanzi to search
  */
-const proxyPage = async (pinyin, translation) => {
-	const hanTrainerProUrl = await getApiUrl(pinyin, translation);
+const proxyPage = async hanzi => {
+	const hanTrainerProUrl = await getApiUrl(hanzi);
 	const response = await proxy(hanTrainerProUrl);
 
 	return response;
@@ -41,7 +41,7 @@ const logInnerError = (err, failedFor) => {
 	});
 };
 
-const getHanziTrainerDetails = async (pinyin, translation) => {
+const getHanziTrainerDetails = async hanzi => {
 	const details = {
 		translations: [],
 		example: {},
@@ -49,7 +49,7 @@ const getHanziTrainerDetails = async (pinyin, translation) => {
 	};
 
 	try {
-		const response = await proxyPage(pinyin, translation);
+		const response = await proxyPage(hanzi);
 		if (!response) throw new Error('Failed to proxy.');
 
 		const html = parseHtmlFromResponse(response);

@@ -16,8 +16,10 @@
     "prettier:fix": "prettier --write src/**/*.js",
     "lint:f": "npm run eslint:fix && npm run prettier:fix",
     "lint:fp": "npm run prettier:fix",
+    "gen:hanzi-links": "node scripts/generateHanziTrainerProLinkIdMap.js",
     "predeploy": "npm run lint:f && npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "postinstall": "npm run gen:hanzi-links"
   },
   "browserslist": [
     ">0.2%",
@@ -59,6 +61,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "gh-pages": "^4.0.0",
+    "jsdom": "^16.7.0",
     "prettier": "2.1.2",
     "progress-bar-webpack-plugin": "^2.1.0",
     "webpack-bundle-analyzer": "^3.9.0",
