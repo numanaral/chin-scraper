@@ -75,7 +75,7 @@ const Card = ({
 	];
 
 	const onClick = () => {
-		if (isFocusMode) return;
+		if (isFocusMode || isFlipped) return;
 
 		// eslint-disable-next-line no-unused-expressions
 		currentCard.current?.scrollIntoView({
@@ -87,7 +87,7 @@ const Card = ({
 	};
 
 	const onTapCancel = () => {
-		if (isFocusMode) return;
+		if (isFocusMode || isFlipped) return;
 		setIsHovering(false);
 	};
 
@@ -133,7 +133,13 @@ const Card = ({
 								Practice writing using your mouse or finger
 							</FocusModeInfoText>
 						)}
-						{hanzi}
+						<div
+							style={{
+								visibility: isFlipped ? 'hidden' : 'visible',
+							}}
+						>
+							{hanzi}
+						</div>
 					</CardInnerContainerFront>
 					<CardInnerContainerBack
 						onClick={onClick}
